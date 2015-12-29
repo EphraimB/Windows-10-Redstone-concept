@@ -23,4 +23,9 @@
 
 #watermark{position: absolute; right: 0%; bottom: 7%; width: 15%; height: auto; color: white; cursor: default;}
 
-#userProfile{}
+#userProfile{position: absolute; left: 45%; top: 10%; width: 5%; height: 8%; background-color: grey; border-radius: 100%;}
+
+#power{position: absolute; right: 5%; top: 10%; width: auto; height: auto; padding: 1.3%; color: white; text-align: center; font-size: 24pt; cursor: default;}
+#power:hover{background-color: grey;}
+
+#edgeTile{left: 25%; top: 25%;}

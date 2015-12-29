@@ -4,5 +4,5 @@
 .splitViewExpanded{position: absolute; top: 10%; left: 5%; width: 20%; height: 75%; background-color: blue; color: white; font-size: 24pt; display: none;}
 .hamburgerButtonExpanded:hover{cursor: default;}
 
-.tile{position: absolute; width: 20%; height: 10%; background-color: blue; color: white;}
+.tile{position: absolute; width: auto; height: auto; padding: 5%; background-color: blue; color: white; text-align: center; cursor: default;}
 .tile:hover{border: 1px solid white;}
