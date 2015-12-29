@@ -27,9 +27,17 @@ setTimeout(function finishedBooting()
     function desktop()
     {
         var desktop = document.getElementById("desktop");
+        var fileExplorerTile = document.getElementById("fileExplorerTile");
+        var fileExplorerApp = document.getElementById("fileExplorerApp");
 
         logonScreenId.style.display = "none";
         desktop.style.display = "inline"
+
+        fileExplorerTile.onclick = function()
+        {
+            fileExplorerApp.style.display = "inline";
+        };
+
     };
 
 }, 5000);

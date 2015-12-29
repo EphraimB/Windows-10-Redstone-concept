@@ -29,3 +29,12 @@
 #power:hover{background-color: grey;}
 
 #edgeTile{left: 25%; top: 25%;}
+#fileExplorerTile{left: 40%; top: 25%;}
+
+#fileExplorerApp{position: absolute; left: 15%; top: 25%; width: 75%; height: 50%; display: none;}
+
+.titleBar{position: absolute; top: 0%; left: 0%; width: 100%; height: 5%; background-color: blue;}
+.appName{position: absolute; top: 0%; left: 1%; width: auto; height: auto; color: white;}
+.windowControls{position: absolute; top: 0%; right: 2%; width: auto; height: auto; color: white;}
+
+.window{position: absolute; top: 5%; left: 0%; width: 100%; height: 95%; background-color: white;}
