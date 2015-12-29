@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Windows 10 Redstone concept</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/xaml.css">
+<script src="js/xaml.js"></script>
+</head>
+<body>
+<div id="bootingScreen">
+<div id="windowsTenLogo">
+<div id="windowsTenLogoTopLeft"></div>
+<div id="windowsTenLogoTopRight"></div>
+<div id="windowsTenLogoBottomLeft"></div>
+<div id="windowsTenLogoBottomRight"></div>
+</div>
+<img src="img/windowsTenProgressLoading.gif" id="windowsTenBootLoader">
+</div>
+
+<div id="logonScreen">
+<div id="userAvatar"></div>
+<input type="password" placeholder="Password" id="passwordInput">
+<div id="loginButton">&#8594</div>
+</div>
+
+<div id="desktop">
+<div id="userProfile"></div>
+<div id="power"></div>
+<div class="splitView" onclick="splitView();">
+<div class="hamburgerButton">&#9776</div>
+</div>
+<div class="splitViewExpanded">
+<div class="hamburgerButtonExpanded">&#9776 Recents</div>
+</div>
+
+<div id="taskbar">
+<div id="taskView"></div>
+<div id="systemTray">
+<div id="clock">12:00 AM</div>
+<div id="date">1/1/2016</div>
+</div>
+</div>
+<div id="watermark">Windows 10 Insider Preview Evaluation copy. Build 11290</div>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>

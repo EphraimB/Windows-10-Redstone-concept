@@ -1,0 +1,8 @@
+.splitView{position: absolute; top: 10%; left: 5%; width: 3%; height: 5%; color: white; font-size: 24pt; text-align: center;}
+.splitView:hover{cursor: default; background-color: grey;}
+
+.splitViewExpanded{position: absolute; top: 10%; left: 5%; width: 20%; height: 75%; background-color: blue; color: white; font-size: 24pt; display: none;}
+.hamburgerButtonExpanded:hover{cursor: default;}
+
+.tile{position: absolute; width: 20%; height: 10%; background-color: blue; color: white;}
+.tile:hover{border: 1px solid white;}
