@@ -30,12 +30,29 @@ setTimeout(function finishedBooting()
         var fileExplorerTile = document.getElementById("fileExplorerTile");
         var fileExplorerApp = document.getElementById("fileExplorerApp");
 
+        var closeWindow = document.getElementsByClassName("closeWindow")[0];
+
+        var threeDimension = document.getElementById("threeDimension");
+
+        var taskbar = document.getElementById("taskbar");
+
         logonScreenId.style.display = "none";
         desktop.style.display = "inline"
 
         fileExplorerTile.onclick = function()
         {
             fileExplorerApp.style.display = "inline";
+
+            closeWindow.onclick = function()
+            {
+                fileExplorerApp.style.display = "none";
+            };
+
+        };
+
+        threeDimension.onclick = function()
+        {
+            alert("3D mode coming soon!");
         };
 
     };
