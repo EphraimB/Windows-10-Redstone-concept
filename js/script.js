@@ -33,6 +33,7 @@ setTimeout(function finishedBooting()
         var closeWindow = document.getElementsByClassName("closeWindow")[0];
 
         var threeDimension = document.getElementById("threeDimension");
+        var threeDimensionStyleSheet = document.createElement("link");
 
         var taskbar = document.getElementById("taskbar");
 
@@ -53,6 +54,11 @@ setTimeout(function finishedBooting()
         threeDimension.onclick = function()
         {
             alert("3D mode coming soon!");
+
+            threeDimensionStyleSheet.setAttribute("rel", "stylesheet");
+            threeDimensionStyleSheet.setAttribute("href", "css/3D.css");
+
+            document.head.appendChild(threeDimensionStyleSheet);
         };
 
     };
