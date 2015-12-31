@@ -53,8 +53,6 @@ setTimeout(function finishedBooting()
 
         threeDimension.onclick = function()
         {
-            alert("3D mode coming soon!");
-
             threeDimensionStyleSheet.setAttribute("rel", "stylesheet");
             threeDimensionStyleSheet.setAttribute("href", "css/3D.css");
 
