@@ -40,6 +40,27 @@ setTimeout(function finishedBooting()
         logonScreenId.style.display = "none";
         desktop.style.display = "inline"
 
+        function rightClick()
+        {
+            var rightClick;
+
+            var event = window.event;
+
+            if(event.which)
+            {
+                rightClick = (event.which == 3);
+            }
+
+            else if(event.button)
+            {
+                rightClick = (event.button == 2);
+            }
+
+            alert(rightClick);
+        };
+
+        
+
         fileExplorerTile.onclick = function()
         {
             fileExplorerApp.style.display = "inline";
