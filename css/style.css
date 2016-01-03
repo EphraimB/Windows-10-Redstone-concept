@@ -56,7 +56,7 @@
 #threeDimension{position: absolute; right: 50%; top: 0%; width: auto; height: 100%; color: white; cursor: default; font-size: 24pt;}
 #threeDimension:hover{background-color: grey;}
 
-#desktopRightClickMenu{position: absolute; left: 45%; top: 45%; width: 10%; height: 25%; background-color: black; color: white; cursor: default; display: none;}
+#desktopRightClickMenu{position: absolute; left: 45%; top: 45%; width: 10%; height: 25%; background-color: black; color: white; border: 1px solid white; cursor: default; display: none;}
 
 #menuItemOne{position: absolute; top: 0%; left: 0%; width: 100%; height: 10%; text-align: center;}
 #menuItemOne:hover{background-color: grey;}
