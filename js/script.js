@@ -41,6 +41,7 @@ setTimeout(function finishedBooting()
         var fileExplorerApp = document.getElementById("fileExplorerApp");
 
         var closeWindow = document.getElementsByClassName("closeWindow")[0];
+        var maximizeWindow = document.getElementsByClassName("maximizeWindow")[0];
 
         var threeDimension = document.getElementById("threeDimension");
         var threeDimensionStyleSheet = document.createElement("link");
@@ -49,6 +50,9 @@ setTimeout(function finishedBooting()
 
         var desktopRightClickMenu = document.getElementById("desktopRightClickMenu");
         var fileExplorerTileRightClickMenu = document.getElementById("fileExplorerTileRightClickMenu");
+
+        var power = document.getElementById("power");
+        var powerMenu = document.getElementById("powerMenu");
 
         logonScreenId.style.display = "none";
         desktop.style.display = "inline"
@@ -63,6 +67,23 @@ setTimeout(function finishedBooting()
         {
             desktopRightClickMenu.style.display = "none";
             fileExplorerTileRightClickMenu.style.display = "none";
+        };
+
+        power.onclick = function powerToggle()
+        {
+            powerMenu.style.display = "inline";
+
+            power.onclick = function()
+            {
+                powerMenu.style.display = "none";
+
+                power.onclick = function()
+                {
+                    powerToggle();
+                };
+
+            };
+
         };
 
         fileExplorerTile.oncontextmenu = function()
@@ -83,6 +104,29 @@ setTimeout(function finishedBooting()
             closeWindow.onclick = function()
             {
                 fileExplorerApp.style.display = "none";
+            };
+
+            maximizeWindow.onclick = function windowMaximized()
+            {
+                fileExplorerApp.style.left = "0%";
+                fileExplorerApp.style.top = "0%";
+                fileExplorerApp.style.width = "100%";
+                fileExplorerApp.style.height = "100%";
+
+                maximizeWindow.onclick = function()
+                {
+                    fileExplorerApp.style.left = "15%";
+                    fileExplorerApp.style.top = "25%";
+                    fileExplorerApp.style.width = "75%";
+                    fileExplorerApp.style.height = "50%";
+
+                    maximizeWindow.onclick = function()
+                    {
+                        windowMaximized();
+                    };
+
+                };
+
             };
 
         };
