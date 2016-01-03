@@ -158,6 +158,17 @@ setTimeout(function finishedBooting()
             {
                 fileExplorerApp.style.top = (event.clientY - offY) + "px";
                 fileExplorerApp.style.left = (event.clientX - offX) + "px";
+
+                if(fileExplorerApp.style.left < "0%")
+                {
+                    fileExplorerApp.style.left = "0%";
+                }
+
+                if(fileExplorerApp.style.top < "0%")
+                {
+                    fileExplorerApp.style.top = "0%";
+                }
+
             };
 
         };
