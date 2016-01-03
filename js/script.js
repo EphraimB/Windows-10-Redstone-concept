@@ -43,6 +43,8 @@ setTimeout(function finishedBooting()
         var closeWindow = document.getElementsByClassName("closeWindow")[0];
         var maximizeWindow = document.getElementsByClassName("maximizeWindow")[0];
 
+        var windowIsMaximized = false;
+
         var titleBar = document.getElementsByClassName("titleBar")[0];
 
         var threeDimension = document.getElementById("threeDimension");
@@ -110,6 +112,8 @@ setTimeout(function finishedBooting()
 
             function windowMaximized()
             {
+                windowIsMaximized = true;
+
                 fileExplorerApp.style.left = "0%";
                 fileExplorerApp.style.top = "0%";
                 fileExplorerApp.style.width = "100%";
@@ -124,6 +128,8 @@ setTimeout(function finishedBooting()
 
             function windowRestored()
             {
+                windowIsMaximized = false;
+
                 fileExplorerApp.style.left = "15%";
                 fileExplorerApp.style.top = "25%";
                 fileExplorerApp.style.width = "75%";
@@ -177,7 +183,7 @@ setTimeout(function finishedBooting()
 
                 if(fileExplorerApp.style.top < "0%")
                 {
-                    windowMaximized();
+                    fileExplorerApp.style.top = "0%";
                 }
 
             };
