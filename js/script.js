@@ -164,19 +164,9 @@ setTimeout(function finishedBooting()
                     fileExplorerApp.style.left = "0%";
                 }
 
-                if(fileExplorerApp.style.left > "25%")
-                {
-                    fileExplorerApp.style.left = "25%";
-                }
-
                 if(fileExplorerApp.style.top < "0%")
                 {
                     fileExplorerApp.style.top = "0%";
-                }
-
-                if(fileExplorerApp.style.top > "50%")
-                {
-                    fileExplorerApp.style.top = "50%";
                 }
 
             };
