@@ -130,28 +130,34 @@ setTimeout(function finishedBooting()
                 };
 
             };
+            window.onload = addListeners();
 
-            titleBar.ondrag = function(event)
+            var offX;
+            var offY;
+
+            function addListeners()
             {
                 titleBar.addEventListener("mousedown", mouseDown, false);
                 window.addEventListener("mouseup", mouseUp, false);
+            };
 
-                function mouseUp()
-                {
-                    window.removeEventListener("mousemove", moveWindow, true);
-                };
+            function mouseUp()
+            {
+                window.removeEventListener("mousemove", moveWindow, true);
+            };
 
-                function mouseDown(event)
-                {
-                    window.addEventListener("mousemove", moveWindow, true);
-                };
+            function mouseDown(event)
+            {
+                offY = event.clientY - parseInt(fileExplorerApp.offsetTop);
+                offX = event.clientX - parseInt(fileExplorerApp.offsetLeft);
 
-                function moveWindow(event)
-                {
-                    fileExplorerApp.style.top = event.clientY + "px";
-                    fileExplorerApp.style.left = event.clientX + "px";
-                };
+                window.addEventListener("mousemove", moveWindow, true);
+            };
 
+            function moveWindow(event)
+            {
+                fileExplorerApp.style.top = (event.clientY - offY) + "px";
+                fileExplorerApp.style.left = (event.clientX - offX) + "px";
             };
 
         };

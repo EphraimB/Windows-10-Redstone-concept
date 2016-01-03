@@ -37,7 +37,7 @@
 
 #fileExplorerApp{position: absolute; left: 15%; top: 25%; width: 75%; height: 50%; display: none;}
 
-.titleBar{position: absolute; top: 0%; left: 0%; width: 100%; height: 7%; background-color: rgba(0, 0, 127, 0.5);}
+.titleBar{position: absolute; top: 0%; left: 0%; width: 100%; height: 7%; background-color: rgba(0, 0, 127, 0.5); cursor: default;}
 .appName{position: absolute; top: 0%; left: 1%; width: auto; height: auto; color: white;}
 
 .windowControls{position: absolute; top: 0%; right: 0%; width: 15%; height: 100%; color: white; cursor: default;}
