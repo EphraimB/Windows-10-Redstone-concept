@@ -43,6 +43,8 @@ setTimeout(function finishedBooting()
         var closeWindow = document.getElementsByClassName("closeWindow")[0];
         var maximizeWindow = document.getElementsByClassName("maximizeWindow")[0];
 
+        var titleBar = document.getElementsByClassName("titleBar")[0];
+
         var threeDimension = document.getElementById("threeDimension");
         var threeDimensionStyleSheet = document.createElement("link");
 
@@ -125,6 +127,29 @@ setTimeout(function finishedBooting()
                         windowMaximized();
                     };
 
+                };
+
+            };
+
+            titleBar.ondrag = function(event)
+            {
+                titleBar.addEventListener("mousedown", mouseDown, false);
+                window.addEventListener("mouseup", mouseUp, false);
+
+                function mouseUp()
+                {
+                    window.removeEventListener("mousemove", moveWindow, true);
+                };
+
+                function mouseDown(event)
+                {
+                    window.addEventListener("mousemove", moveWindow, true);
+                };
+
+                function moveWindow(event)
+                {
+                    fileExplorerApp.style.top = event.clientY + "px";
+                    fileExplorerApp.style.left = event.clientX + "px";
                 };
 
             };
