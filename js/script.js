@@ -108,7 +108,7 @@ setTimeout(function finishedBooting()
                 fileExplorerApp.style.display = "none";
             };
 
-            maximizeWindow.onclick = function windowMaximized()
+            function windowMaximized()
             {
                 fileExplorerApp.style.left = "0%";
                 fileExplorerApp.style.top = "0%";
@@ -117,19 +117,30 @@ setTimeout(function finishedBooting()
 
                 maximizeWindow.onclick = function()
                 {
-                    fileExplorerApp.style.left = "15%";
-                    fileExplorerApp.style.top = "25%";
-                    fileExplorerApp.style.width = "75%";
-                    fileExplorerApp.style.height = "50%";
-
-                    maximizeWindow.onclick = function()
-                    {
-                        windowMaximized();
-                    };
-
+                    windowRestored();
                 };
 
             };
+
+            function windowRestored()
+            {
+                fileExplorerApp.style.left = "15%";
+                fileExplorerApp.style.top = "25%";
+                fileExplorerApp.style.width = "75%";
+                fileExplorerApp.style.height = "50%";
+
+                maximizeWindow.onclick = function()
+                {
+                    windowMaximized();
+                };
+
+            };
+
+            maximizeWindow.onclick = function()
+            {
+                windowMaximized();
+            };
+
             window.onload = addListeners();
 
             var offX;
@@ -166,7 +177,7 @@ setTimeout(function finishedBooting()
 
                 if(fileExplorerApp.style.top < "0%")
                 {
-                    fileExplorerApp.style.top = "0%";
+                    windowMaximized();
                 }
 
             };
