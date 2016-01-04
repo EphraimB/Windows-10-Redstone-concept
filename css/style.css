@@ -35,7 +35,7 @@
 #edgeTile{left: 25%; top: 25%;}
 #fileExplorerTile{left: 40%; top: 25%;}
 
-#fileExplorerApp{position: absolute; left: 15%; top: 25%; width: 75%; height: 50%; display: none;}
+#fileExplorerApp{position: absolute; left: 15%; top: 25%; width: 75%; height: 50%; box-shadow: 0px 0px 5px grey; display: none;}
 
 .titleBar{position: absolute; top: 0%; left: 0%; width: 100%; height: 7%; background-color: rgba(0, 0, 127, 0.5); cursor: default;}
 .appName{position: absolute; top: 0%; left: 1%; width: auto; height: auto; color: white;}
