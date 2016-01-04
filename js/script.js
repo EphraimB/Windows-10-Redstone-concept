@@ -37,6 +37,7 @@ setTimeout(function finishedBooting()
     function desktop()
     {
         var desktop = document.getElementById("desktop");
+        var tile = document.getElementsByClassName("tile");
         var fileExplorerTile = document.getElementById("fileExplorerTile");
         var fileExplorerApp = document.getElementById("fileExplorerApp");
 
@@ -94,6 +95,56 @@ setTimeout(function finishedBooting()
         {
             fileExplorerTileRightClickMenu.style.display = "inline";
             return false;
+        };
+
+        window.onload = addTileListeners();
+
+        var offsetX;
+        var offsetY;
+
+        var offsetTwoX;
+        var offsetTwoY;
+
+        function addTileListeners()
+        {
+            tile[0].addEventListener("mousedown", mouseDown, false);
+            tile[1].addEventListener("mousedown", mouseDownTwo, false);
+
+            window.addEventListener("mouseup", mouseUp, false);
+        };
+
+        function mouseUp()
+        {
+            window.removeEventListener("mousemove", moveFirstTile, true);
+            window.removeEventListener("mousemove", moveSecondTile, true);
+        };
+
+        function mouseDown(event)
+        {
+            offsetY = event.clientY - parseInt(tile[0].offsetTop);
+            offsetX = event.clientX - parseInt(tile[0].offsetLeft);
+
+            window.addEventListener("mousemove", moveFirstTile, true);
+        };
+
+        function mouseDownTwo(event)
+        {
+            offsetTwoY = event.clientY - parseInt(tile[1].offsetTop);
+            offsetTwoX = event.clientX - parseInt(tile[1].offsetLeft);
+
+            window.addEventListener("mousemove", moveSecondTile, true);
+        };
+
+        function moveFirstTile(event)
+        {
+            tile[0].style.top = (event.clientY - offsetY) + "px";
+            tile[0].style.left = (event.clientX - offsetX) + "px";
+        };
+
+        function moveSecondTile(event)
+        {
+            tile[1].style.top = (event.clientY - offsetTwoY) + "px";
+            tile[1].style.left = (event.clientX - offsetTwoX) + "px";
         };
 
         fileExplorerTile.onclick = function()
