@@ -53,8 +53,8 @@ setTimeout(function finishedBooting()
 
         var taskbar = document.getElementById("taskbar");
 
-        var desktopRightClickMenu = document.getElementById("desktopRightClickMenu");
-        var fileExplorerTileRightClickMenu = document.getElementById("fileExplorerTileRightClickMenu");
+        var desktopContextMenu = document.getElementById("desktopContextMenu");
+        var tileContextMenu = document.getElementById("tileContextMenu");
 
         var resizeMenu = document.getElementById("resizeMenu");
         var resizeSubMenu = document.getElementById("resizeSubMenu");
@@ -72,14 +72,14 @@ setTimeout(function finishedBooting()
 
         desktop.oncontextmenu = function()
         {
-            desktopRightClickMenu.style.display = "inline";
+            desktopContextMenu.style.display = "inline";
             return false;
         };
 
         desktop.onclick = function()
         {
-            desktopRightClickMenu.style.display = "none";
-            fileExplorerTileRightClickMenu.style.display = "none";
+            desktopContextMenu.style.display = "none";
+            tileContextMenu.style.display = "none";
 
             resizeSubMenu.style.display = "none";
         };
@@ -101,9 +101,14 @@ setTimeout(function finishedBooting()
 
         };
 
-        fileExplorerTile.oncontextmenu = function()
+        for(var i = 0; i < tile.length; i++)
         {
-            fileExplorerTileRightClickMenu.style.display = "inline";
+            tile[i].addEventListener("contextmenu", showTileContextMenu, false);
+        }
+
+        function showTileContextMenu()
+        {
+            tileContextMenu.style.display = "inline";
             return false;
         };
 
@@ -124,26 +129,26 @@ setTimeout(function finishedBooting()
 
         smallTile.onclick = function()
         {
-            tile[1].style.width = "1%";
-            tile[1].style.height = "1%";
+            tile[i].style.width = "1%";
+            tile[i].style.height = "1%";
         };
 
         mediumTile.onclick = function()
         {
-            tile[1].style.width = "2%";
-            tile[1].style.height = "3%";
+            tile[i].style.width = "2%";
+            tile[i].style.height = "3%";
         };
 
         wideTile.onclick = function()
         {
-            tile[1].style.width = "8%";
-            tile[1].style.height = "3%";
+            tile[i].style.width = "8%";
+            tile[i].style.height = "3%";
         };
 
         largeTile.onclick = function()
         {
-            tile[1].style.width = "12%";
-            tile[1].style.height = "16%";
+            tile[i].style.width = "12%";
+            tile[i].style.height = "16%";
         };
 
         window.onload = addTileListeners();
