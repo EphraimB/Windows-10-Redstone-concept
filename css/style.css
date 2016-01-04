@@ -64,4 +64,12 @@
 #menuItemTwo{position: absolute; top: 10%; left: 0%; width: 100%; height: 10%; text-align: center;}
 #menuItemTwo:hover{background-color: grey;}
 
-#fileExplorerTileRightClickMenu{position: absolute; left: 45%; top: 45%; width: 10%; height: 25%; background-color: black; color: white; cursor: default; display: none;}
+#fileExplorerTileRightClickMenu{position: absolute; left: 45%; top: 45%; width: 10%; height: 25%; background-color: black; color: white; border: 1px solid white; cursor: default; display: none;}
+
+#resizeMenu{position: absolute; top: 10%; left: 0%; width: 100%; height: 10%; text-align: center;}
+#resizeMenu:hover{background-color: grey;}
+
+#resizeSubMenu{position: absolute; left: 55%; top: 45%; width: 10%; height: 25%; background-color: black; color: white; border: 1px solid white; cursor: default; display: none;}
+
+#smallTile{position: absolute; top: 10%; left: 0%; width: 100%; height: 10%; text-align: center;}
+#smallTile:hover{background-color: grey;}

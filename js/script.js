@@ -56,6 +56,11 @@ setTimeout(function finishedBooting()
         var desktopRightClickMenu = document.getElementById("desktopRightClickMenu");
         var fileExplorerTileRightClickMenu = document.getElementById("fileExplorerTileRightClickMenu");
 
+        var resizeMenu = document.getElementById("resizeMenu");
+        var resizeSubMenu = document.getElementById("resizeSubMenu");
+
+        var smallTile = document.getElementById("smallTile");
+
         var power = document.getElementById("power");
         var powerMenu = document.getElementById("powerMenu");
 
@@ -72,6 +77,8 @@ setTimeout(function finishedBooting()
         {
             desktopRightClickMenu.style.display = "none";
             fileExplorerTileRightClickMenu.style.display = "none";
+
+            resizeSubMenu.style.display = "none";
         };
 
         power.onclick = function powerToggle()
@@ -95,6 +102,21 @@ setTimeout(function finishedBooting()
         {
             fileExplorerTileRightClickMenu.style.display = "inline";
             return false;
+        };
+
+        resizeMenu.onmouseover = function()
+        {
+            resizeSubMenu.style.display = "inline";
+        };
+
+        resizeMenu.onmouseout = function()
+        {
+            resizeSubMenu.style.display = "none";
+        };
+
+        resizeSubMenu.onmouseover = function()
+        {
+            resizeSubMenu.style.display = "inline";
         };
 
         window.onload = addTileListeners();
