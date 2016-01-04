@@ -13,9 +13,7 @@
 #userName{position: absolute; left: 42%; top: 40%; width: auto; height: auto; color: white; font-size: 24pt;}
 #email{position: absolute; left: 45%; top: 45%; width: auto; height: auto; color: white;}
 
-#passwordInput{position: absolute; left: 43%; top: 50%; width: 10%; height: 3%; border: 1px solid black; background-color: white;}
-
-#loginButton{position: absolute; left: 53%; top: 50%; width: 3%; height: 3.7%; background-color: rgb(0, 0, 200); color: white; text-align: center; font-size: 24pt;}
+#loginButton{position: absolute; left: 45%; top: 50%; width: auto; height: auto; padding: 2%; background-color: rgb(0, 0, 200); color: white; text-align: center;}
 #loginButton:hover{cursor: default; border: 1px solid white;}
 
 #desktop{position: absolute; left: 0%; top: 0%; width: 100%; height: 100%; display: none;}
