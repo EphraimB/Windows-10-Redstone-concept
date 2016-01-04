@@ -9,7 +9,9 @@
 #windowsTenBootLoader{position: absolute; left: 50%; top: 60%;}
 
 #logonScreen{position: absolute; left: 0%; top: 0%; width: 100%; height: 100%; display: none;}
-#userAvatar{position: absolute; left: 45%; top: 25%; width: 8%; height: 15%; background-color: grey; border-radius: 100%;}
+#userAvatar{position: absolute; left: 45%; top: 25%; width: 8%; height: 15%; background-image: url("../img/userProfile.jpg"); background-size: 100% 100%; border-radius: 100%;}
+#userName{position: absolute; left: 42%; top: 40%; width: auto; height: auto; color: white; font-size: 24pt;}
+#email{position: absolute; left: 45%; top: 45%; width: auto; height: auto; color: white;}
 
 #passwordInput{position: absolute; left: 43%; top: 50%; width: 10%; height: 3%; border: 1px solid black; background-color: white;}
 
@@ -25,7 +27,7 @@
 
 #watermark{position: absolute; right: 0%; bottom: 7%; width: 15%; height: auto; color: white; cursor: default;}
 
-#userProfile{position: absolute; left: 45%; top: 10%; width: 5%; height: 8%; background-color: grey; border-radius: 100%;}
+#userProfile{position: absolute; left: 45%; top: 10%; width: 5%; height: 8%; background-image: url("../img/userProfile.jpg"); background-size: 100% 100%; border-radius: 100%;}
 
 #power{position: absolute; right: 5%; top: 10%; width: auto; height: auto; padding: 1.3%; color: white; text-align: center; font-size: 24pt; cursor: default;}
 #power:hover{background-color: grey;}
