@@ -60,6 +60,9 @@ setTimeout(function finishedBooting()
         var resizeSubMenu = document.getElementById("resizeSubMenu");
 
         var smallTile = document.getElementById("smallTile");
+        var mediumTile = document.getElementById("mediumTile");
+        var wideTile = document.getElementById("wideTile");
+        var largeTile = document.getElementById("largeTile");
 
         var power = document.getElementById("power");
         var powerMenu = document.getElementById("powerMenu");
@@ -117,6 +120,30 @@ setTimeout(function finishedBooting()
         resizeSubMenu.onmouseover = function()
         {
             resizeSubMenu.style.display = "inline";
+        };
+
+        smallTile.onclick = function()
+        {
+            tile[1].style.width = "1%";
+            tile[1].style.height = "1%";
+        };
+
+        mediumTile.onclick = function()
+        {
+            tile[1].style.width = "2%";
+            tile[1].style.height = "3%";
+        };
+
+        wideTile.onclick = function()
+        {
+            tile[1].style.width = "8%";
+            tile[1].style.height = "3%";
+        };
+
+        largeTile.onclick = function()
+        {
+            tile[1].style.width = "12%";
+            tile[1].style.height = "16%";
         };
 
         window.onload = addTileListeners();

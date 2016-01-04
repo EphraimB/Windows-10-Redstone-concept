@@ -33,7 +33,7 @@
 #powerMenu{position: absolute; right: 2%; top: 20%; width: 10%; height: 15%; background-color: black; color: white; display: none;}
 
 #edgeTile{left: 25%; top: 25%;}
-#fileExplorerTile{left: 40%; top: 25%;}
+#fileExplorerTile{left: 40%; top: 25%; font-size: 98%;}
 
 #fileExplorerApp{position: absolute; left: 15%; top: 25%; width: 75%; height: 50%; box-shadow: 0px 0px 5px grey; display: none;}
 
@@ -64,12 +64,21 @@
 #menuItemTwo{position: absolute; top: 10%; left: 0%; width: 100%; height: 10%; text-align: center;}
 #menuItemTwo:hover{background-color: grey;}
 
-#fileExplorerTileRightClickMenu{position: absolute; left: 45%; top: 45%; width: 10%; height: 25%; background-color: black; color: white; border: 1px solid white; cursor: default; display: none;}
+#fileExplorerTileRightClickMenu{position: absolute; left: 45%; top: 45%; width: 10%; height: 25%; background-color: black; color: white; border: 1px solid white; z-index: 1; cursor: default; display: none;}
 
 #resizeMenu{position: absolute; top: 10%; left: 0%; width: 100%; height: 10%; text-align: center;}
 #resizeMenu:hover{background-color: grey;}
 
-#resizeSubMenu{position: absolute; left: 55%; top: 45%; width: 10%; height: 25%; background-color: black; color: white; border: 1px solid white; cursor: default; display: none;}
+#resizeSubMenu{position: absolute; left: 55%; top: 45%; width: 10%; height: 25%; background-color: black; color: white; border: 1px solid white; z-index: 1; cursor: default; display: none;}
 
 #smallTile{position: absolute; top: 10%; left: 0%; width: 100%; height: 10%; text-align: center;}
 #smallTile:hover{background-color: grey;}
+
+#mediumTile{position: absolute; top: 25%; left: 0%; width: 100%; height: 10%; text-align: center;}
+#mediumTile:hover{background-color: grey;}
+
+#wideTile{position: absolute; top: 40%; left: 0%; width: 100%; height: 10%; text-align: center;}
+#wideTile:hover{background-color: grey;}
+
+#largeTile{position: absolute; top: 55%; left: 0%; width: 100%; height: 10%; text-align: center;}
+#largeTile:hover{background-color: grey;}
