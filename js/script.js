@@ -125,8 +125,6 @@ setTimeout(function finishedBooting()
         for(var i = 0; i < tile.length; i++)
         {
             tile[i].addEventListener("contextmenu", showTileContextMenu, false);
-
-            var pickedTile = tile[i]
         }
 
         function showTileContextMenu()
@@ -152,26 +150,26 @@ setTimeout(function finishedBooting()
 
         smallTile.onclick = function()
         {
-            tile[i].style.width = "1%";
-            tile[i].style.height = "1%";
+            tile[0].style.width = "1%";
+            tile[0].style.height = "1%";
         };
 
         mediumTile.onclick = function()
         {
-            tile[i].style.width = "2%";
-            tile[i].style.height = "3%";
+            tile[0].style.width = "2%";
+            tile[0].style.height = "3%";
         };
 
         wideTile.onclick = function()
         {
-            tile[i].style.width = "8%";
-            tile[i].style.height = "3%";
+            tile[0].style.width = "8%";
+            tile[0].style.height = "3%";
         };
 
         largeTile.onclick = function()
         {
-            tile[i].style.width = "12%";
-            tile[i].style.height = "16%";
+            tile[0].style.width = "12%";
+            tile[0].style.height = "16%";
         };
 
         window.onload = addTileListeners();
