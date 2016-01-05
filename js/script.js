@@ -68,6 +68,7 @@ setTimeout(function finishedBooting()
         var powerMenu = document.getElementById("powerMenu");
 
         var restart = document.getElementById("restart");
+        var lock = document.getElementById("lock");
 
         logonScreenId.style.display = "none";
         desktop.style.display = "inline"
@@ -106,6 +107,13 @@ setTimeout(function finishedBooting()
         restart.onclick = function()
         {
             window.location.reload(true);
+        };
+
+        lock.onclick = function()
+        {
+            desktop.style.display = "none";
+
+            logonScreen();
         };
 
         for(var i = 0; i < tile.length; i++)
