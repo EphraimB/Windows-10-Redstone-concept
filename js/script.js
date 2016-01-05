@@ -69,6 +69,7 @@ setTimeout(function finishedBooting()
 
         var restart = document.getElementById("restart");
         var lock = document.getElementById("lock");
+        var shutDown = document.getElementById("shutDown");
 
         logonScreenId.style.display = "none";
         desktop.style.display = "inline"
@@ -114,6 +115,11 @@ setTimeout(function finishedBooting()
             desktop.style.display = "none";
 
             logonScreen();
+        };
+
+        shutDown.onclick = function()
+        {
+            window.close();
         };
 
         for(var i = 0; i < tile.length; i++)
