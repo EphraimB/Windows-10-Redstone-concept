@@ -67,6 +67,8 @@ setTimeout(function finishedBooting()
         var power = document.getElementById("power");
         var powerMenu = document.getElementById("powerMenu");
 
+        var restart = document.getElementById("restart");
+
         logonScreenId.style.display = "none";
         desktop.style.display = "inline"
 
@@ -99,6 +101,11 @@ setTimeout(function finishedBooting()
 
             };
 
+        };
+
+        restart.onclick = function()
+        {
+            window.location.reload(true);
         };
 
         for(var i = 0; i < tile.length; i++)
