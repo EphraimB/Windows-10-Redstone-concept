@@ -174,21 +174,16 @@ setTimeout(function finishedBooting()
         var offsetX;
         var offsetY;
 
-        var offsetTwoX;
-        var offsetTwoY;
-
         function addTileListeners()
         {
             tile[0].addEventListener("mousedown", mouseDown, false);
-            tile[1].addEventListener("mousedown", mouseDownTwo, false);
 
             window.addEventListener("mouseup", mouseUp, false);
         };
 
         function mouseUp()
         {
-            window.removeEventListener("mousemove", moveFirstTile, true);
-            window.removeEventListener("mousemove", moveSecondTile, true);
+            window.removeEventListener("mousemove", moveTile, true);
         };
 
         function mouseDown(event)
@@ -196,27 +191,13 @@ setTimeout(function finishedBooting()
             offsetY = event.clientY - parseInt(tile[0].offsetTop);
             offsetX = event.clientX - parseInt(tile[0].offsetLeft);
 
-            window.addEventListener("mousemove", moveFirstTile, true);
+            window.addEventListener("mousemove", moveTile, true);
         };
 
-        function mouseDownTwo(event)
-        {
-            offsetTwoY = event.clientY - parseInt(tile[1].offsetTop);
-            offsetTwoX = event.clientX - parseInt(tile[1].offsetLeft);
-
-            window.addEventListener("mousemove", moveSecondTile, true);
-        };
-
-        function moveFirstTile(event)
+        function moveTile(event)
         {
             tile[0].style.top = (event.clientY - offsetY) + "px";
             tile[0].style.left = (event.clientX - offsetX) + "px";
-        };
-
-        function moveSecondTile(event)
-        {
-            tile[1].style.top = (event.clientY - offsetTwoY) + "px";
-            tile[1].style.left = (event.clientX - offsetTwoX) + "px";
         };
 
         fileExplorerTile.onclick = function()
