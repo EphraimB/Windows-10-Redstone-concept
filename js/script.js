@@ -122,10 +122,7 @@ setTimeout(function finishedBooting()
             window.close();
         };
 
-        for(var i = 0; i < tile.length; i++)
-        {
-            tile[i].addEventListener("contextmenu", showTileContextMenu, false);
-        }
+        tile[0].addEventListener("contextmenu", showTileContextMenu, false);
 
         function showTileContextMenu()
         {
