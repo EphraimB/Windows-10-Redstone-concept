@@ -10,8 +10,8 @@
 
 #logonScreen{position: absolute; left: 0%; top: 0%; width: 100%; height: 100%; display: none;}
 #userAvatar{position: absolute; left: 45%; top: 25%; width: 8%; height: 15%; background-image: url("../img/userProfile.jpg"); background-size: 100% 100%; border-radius: 100%;}
-#userName{position: absolute; left: 42%; top: 40%; width: auto; height: auto; color: white; font-size: 24pt;}
-#email{position: absolute; left: 45%; top: 45%; width: auto; height: auto; color: white;}
+#userName{position: absolute; left: 42%; top: 40%; width: auto; height: auto; color: white; font-size: 24pt; cursor: default;}
+#email{position: absolute; left: 45%; top: 45%; width: auto; height: auto; color: white; cursor: default;}
 
 #loginButton{position: absolute; left: 45%; top: 50%; width: auto; height: auto; padding: 2%; background-color: rgb(0, 0, 200); color: white; text-align: center;}
 #loginButton:hover{cursor: default; border: 1px solid white;}

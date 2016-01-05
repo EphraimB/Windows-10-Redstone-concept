@@ -104,6 +104,8 @@ setTimeout(function finishedBooting()
         for(var i = 0; i < tile.length; i++)
         {
             tile[i].addEventListener("contextmenu", showTileContextMenu, false);
+
+            var pickedTile = tile[i]
         }
 
         function showTileContextMenu()
