@@ -179,8 +179,6 @@ setTimeout(function finishedBooting()
 
             for(var i = 0; i < tile.length; i++)
             {
-                tile[i].indexNumber = i;
-
                 tile[i].addEventListener("mousedown", mouseDown, false);
             }
 
@@ -194,16 +192,18 @@ setTimeout(function finishedBooting()
 
         function mouseDown(event)
         {
-            offsetY = event.clientY - parseInt(this.id.offsetTop);
-            offsetX = event.clientX - parseInt(this.id.offsetLeft);
+            offsetY = event.clientY - parseInt(this.offsetTop);
+            offsetX = event.clientX - parseInt(this.offsetLeft);
+
+            sessionStorage.setItem("pickedTile", this.id);
 
             window.addEventListener("mousemove", moveTile, true);
         };
 
         function moveTile(event)
         {
-            this.id.style.top = (event.clientY - offsetY) + "px";
-            this.id.style.left = (event.clientX - offsetX) + "px";
+            document.getElementById(sessionStorage.pickedTile).style.top = (event.clientY - offsetY) + "px";
+            document.getElementById(sessionStorage.pickedTile).style.left = (event.clientX - offsetX) + "px";
         };
 
         fileExplorerTile.onclick = function()
