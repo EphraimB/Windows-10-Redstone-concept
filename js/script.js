@@ -129,12 +129,15 @@ setTimeout(function finishedBooting()
 
         function addTileListeners()
         {
+            var flag = 0;
 
             for(var i = 0; i < tile.length; i++)
             {
                 tile[i].addEventListener("mousedown", mouseDown, false);
                 tile[i].addEventListener("contextmenu", showTileContextMenu, false);
             }
+
+            fileExplorerTile.addEventListener("click", openFileExplorerApp, false);
 
             window.addEventListener("mouseup", mouseUp, false);
         };
@@ -194,6 +197,8 @@ setTimeout(function finishedBooting()
 
         function mouseDown(event)
         {
+            flag = 0;
+
             offsetY = event.clientY - parseInt(this.offsetTop);
             offsetX = event.clientX - parseInt(this.offsetLeft);
 
@@ -204,13 +209,19 @@ setTimeout(function finishedBooting()
 
         function moveTile(event)
         {
+            flag = 1;
+
             document.getElementById(sessionStorage.pickedTile).style.top = (event.clientY - offsetY) + "px";
             document.getElementById(sessionStorage.pickedTile).style.left = (event.clientX - offsetX) + "px";
         };
 
-        fileExplorerTile.onclick = function()
+        function openFileExplorerApp()
         {
-            fileExplorerApp.style.display = "inline";
+
+            if(flag == 0)
+            {
+                fileExplorerApp.style.display = "inline";
+            }
 
             fileExplorerApp.oncontextmenu = function()
             {
