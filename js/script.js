@@ -122,11 +122,29 @@ setTimeout(function finishedBooting()
             window.close();
         };
 
-        tile[0].addEventListener("contextmenu", showTileContextMenu, false);
+        window.onload = addTileListeners();
+
+        var offsetX;
+        var offsetY;
+
+        function addTileListeners()
+        {
+
+            for(var i = 0; i < tile.length; i++)
+            {
+                tile[i].addEventListener("mousedown", mouseDown, false);
+                tile[i].addEventListener("contextmenu", showTileContextMenu, false);
+            }
+
+            window.addEventListener("mouseup", mouseUp, false);
+        };
 
         function showTileContextMenu()
         {
             tileContextMenu.style.display = "inline";
+
+            sessionStorage.setItem("pickedTile", this.id);
+
             return false;
         };
 
@@ -147,42 +165,26 @@ setTimeout(function finishedBooting()
 
         smallTile.onclick = function()
         {
-            tile[0].style.width = "1%";
-            tile[0].style.height = "1%";
+            document.getElementById(sessionStorage.pickedTile).style.width = "1%";
+            document.getElementById(sessionStorage.pickedTile).style.height = "1%";
         };
 
         mediumTile.onclick = function()
         {
-            tile[0].style.width = "2%";
-            tile[0].style.height = "3%";
+            document.getElementById(sessionStorage.pickedTile).style.width = "2%";
+            document.getElementById(sessionStorage.pickedTile).style.height = "3%";
         };
 
         wideTile.onclick = function()
         {
-            tile[0].style.width = "8%";
-            tile[0].style.height = "3%";
+            document.getElementById(sessionStorage.pickedTile).style.width = "8%";
+            document.getElementById(sessionStorage.pickedTile).style.height = "3%";
         };
 
         largeTile.onclick = function()
         {
-            tile[0].style.width = "12%";
-            tile[0].style.height = "16%";
-        };
-
-        window.onload = addTileListeners();
-
-        var offsetX;
-        var offsetY;
-
-        function addTileListeners()
-        {
-
-            for(var i = 0; i < tile.length; i++)
-            {
-                tile[i].addEventListener("mousedown", mouseDown, false);
-            }
-
-            window.addEventListener("mouseup", mouseUp, false);
+            document.getElementById(sessionStorage.pickedTile).style.width = "12%";
+            document.getElementById(sessionStorage.pickedTile).style.height = "16%";
         };
 
         function mouseUp()
