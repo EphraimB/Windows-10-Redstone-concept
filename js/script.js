@@ -219,17 +219,12 @@ setTimeout(function finishedBooting()
 
         function openFileExplorerApp()
         {
-            fileExplorerAppRunning.style.display = "inline";
 
             if(flag == 0)
             {
+                fileExplorerAppRunning.style.display = "inline";
                 fileExplorerApp.style.display = "inline";
             }
-
-            fileExplorerApp.oncontextmenu = function()
-            {
-                
-            };
 
             closeWindow.onclick = function()
             {
