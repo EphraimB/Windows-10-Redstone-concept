@@ -53,6 +53,8 @@ setTimeout(function finishedBooting()
 
         var taskbar = document.getElementById("taskbar");
 
+        var fileExplorerAppRunning = document.getElementById("fileExplorerAppRunning");
+
         var desktopContextMenu = document.getElementById("desktopContextMenu");
         var tileContextMenu = document.getElementById("tileContextMenu");
 
@@ -217,6 +219,7 @@ setTimeout(function finishedBooting()
 
         function openFileExplorerApp()
         {
+            fileExplorerAppRunning.style.display = "inline";
 
             if(flag == 0)
             {
@@ -231,6 +234,7 @@ setTimeout(function finishedBooting()
             closeWindow.onclick = function()
             {
                 fileExplorerApp.style.display = "none";
+                fileExplorerAppRunning.style.display = "none";
             };
 
             function windowMaximized()
