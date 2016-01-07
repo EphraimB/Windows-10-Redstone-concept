@@ -39,7 +39,9 @@ setTimeout(function finishedBooting()
         var desktop = document.getElementById("desktop");
         var tile = document.getElementsByClassName("tile");
         var fileExplorerTile = document.getElementById("fileExplorerTile");
+        var settingsTile = document.getElementById("settingsTile");
         var fileExplorerApp = document.getElementById("fileExplorerApp");
+        var settingsApp = document.getElementById("settingsApp");
 
         var closeWindow = document.getElementsByClassName("closeWindow")[0];
         var maximizeWindow = document.getElementsByClassName("maximizeWindow")[0];
@@ -140,6 +142,7 @@ setTimeout(function finishedBooting()
             }
 
             fileExplorerTile.addEventListener("click", openFileExplorerApp, false);
+            settingsTile.addEventListener("click", openSettingsApp, false);
 
             window.addEventListener("mouseup", mouseUp, false);
         };
@@ -215,6 +218,16 @@ setTimeout(function finishedBooting()
 
             document.getElementById(sessionStorage.pickedTile).style.top = (event.clientY - offsetY) + "px";
             document.getElementById(sessionStorage.pickedTile).style.left = (event.clientX - offsetX) + "px";
+        };
+
+        function openSettingsApp()
+        {
+
+            if(flag == 0)
+            {
+                settingsApp.style.display = "inline";
+            }
+
         };
 
         function openFileExplorerApp()
