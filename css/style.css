@@ -22,6 +22,9 @@
 #fileExplorerAppRunning{position: absolute; left: 2%; top: 0%; width: 5%; height: 100%; background-image: url("../img/fileExplorerAppRunning.png"); background-size: 100% 100%; display: none;}
 #fileExplorerAppRunning:hover{background-color: grey;}
 
+#settingsAppRunning{position: absolute; left: 8%; top: 0%; width: 5%; height: 100%; background-image: url("../img/settingsAppRunning.png"); background-size: 100% 100%; display: none;}
+settingsAppRunning:hover{background-color: grey;}
+
 #systemTray{position: absolute; right: 0%; top: 0%; width: 30%; height: 100%;}
 #clock{position: absolute; right: 5%; top: 10%; color: white; cursor: default;}
 #date{position: absolute; right: 5%; bottom: 10%; color: white; cursor: default;}

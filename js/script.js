@@ -60,6 +60,8 @@ setTimeout(function finishedBooting()
 
         var runningApp = document.getElementsByClassName("runningApp");
 
+        var settingsAppRunning = document.getElementById("settingsAppRunning");
+
         var desktopContextMenu = document.getElementById("desktopContextMenu");
         var tileContextMenu = document.getElementById("tileContextMenu");
 
@@ -228,6 +230,7 @@ setTimeout(function finishedBooting()
 
             if(flag == 0)
             {
+                settingsAppRunning.style.display = "inline";
                 settingsApp.style.display = "inline";
             }
 
@@ -244,12 +247,19 @@ setTimeout(function finishedBooting()
 
         };
 
-        for(var i = 0; i < closeWindow.length; i++)
-        {
-            var closeCurrentWindow = closeWindow[i];
-        }
+        window.onload = addWindowControlListeners();
 
-        closeCurrentWindow.onclick = function()
+        function addWindowControlListeners()
+        {
+
+            for(var i = 0; i < closeWindow.length; i++)
+            {
+                closeWindow[i].addEventListener("click", closeWindowClicked, false);
+            }
+
+        };
+
+        function closeWindowClicked()
         {
 
             for(var i = 0; i < runningApp.length; i++)
@@ -257,10 +267,7 @@ setTimeout(function finishedBooting()
                 runningApp[i].style.display = "none";
             }
 
-            for(var i = 0; i < app.length; i++)
-            {
-                app[i].style.display = "none";
-            }
+            document.getElementById(this.parentNode.parentNode.parentNode.id).style.display = "none";
 
         };
 
