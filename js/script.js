@@ -257,6 +257,11 @@ setTimeout(function finishedBooting()
                 closeWindow[i].addEventListener("click", closeWindowClicked, false);
             }
 
+            for(var i = 0; i < maximizeWindow.length; i++)
+            {
+                maximizeWindow[i].addEventListener("click", windowMaximizedClicked, false);
+            }
+
         };
 
         function closeWindowClicked()
@@ -276,47 +281,30 @@ setTimeout(function finishedBooting()
 
         };
 
-        function windowMaximized()
+        function windowMaximizedClicked()
         {
             windowIsMaximized = true;
 
-            for(var i = 0; i < app.length; i++)
-            {
-                app[i].style.left = "0%";
-                app[i].style.top = "0%";
-                app[i].style.width = "100%";
-                app[i].style.height = "100%";
-            }
+            document.getElementById(this.parentNode.parentNode.parentNode.id).style.left = "0%";
+            document.getElementById(this.parentNode.parentNode.parentNode.id).style.top = "0%";
+            document.getElementById(this.parentNode.parentNode.parentNode.id).style.width = "100%";
+            document.getElementById(this.parentNode.parentNode.parentNode.id).style.height = "93%";
 
-            maximizeWindow.onclick = function()
-            {
-                windowRestored();
-            };
-
-            function windowRestored()
-            {
-                windowIsMaximized = false;
-
-                for(var i = 0; i < app.length; i++)
-                {
-                    app[i].style.left = "15%";
-                    app[i].style.top = "25%";
-                    app[i].style.width = "75%";
-                    app[i].style.height = "50%";
-                }
-
-                maximizeWindow.onclick = function()
-                {
-                    windowMaximized();
-                };
-
-            };
-
+            this.removeEventListener("click", windowMaximizedClicked, false);
+            this.addEventListener("click", windowRestored, false);
         };
 
-        maximizeWindow.onclick = function()
+        function windowRestored()
         {
-            windowMaximized();
+            windowIsMaximized = false;
+
+            document.getElementById(this.parentNode.parentNode.parentNode.id).style.left = "15%";
+            document.getElementById(this.parentNode.parentNode.parentNode.id).style.top = "25%";
+            document.getElementById(this.parentNode.parentNode.parentNode.id).style.width = "75%";
+            document.getElementById(this.parentNode.parentNode.parentNode.id).style.height = "50%";
+
+            this.removeEventListener("click", windowRestored, false);
+            this.addEventListener("click", windowMaximizedClicked, false);
         };
 
         window.onload = addListeners();
