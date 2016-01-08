@@ -262,9 +262,14 @@ setTimeout(function finishedBooting()
         function closeWindowClicked()
         {
 
-            for(var i = 0; i < runningApp.length; i++)
+            if(this.parentNode.parentNode.parentNode.id == "fileExplorerApp")
             {
-                runningApp[i].style.display = "none";
+                fileExplorerAppRunning.style.display = "none";
+            }
+
+            if(this.parentNode.parentNode.parentNode.id == "settingsApp")
+            {
+                settingsAppRunning.style.display = "none";
             }
 
             document.getElementById(this.parentNode.parentNode.parentNode.id).style.display = "none";
