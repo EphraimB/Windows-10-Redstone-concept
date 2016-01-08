@@ -40,22 +40,25 @@ setTimeout(function finishedBooting()
         var tile = document.getElementsByClassName("tile");
         var fileExplorerTile = document.getElementById("fileExplorerTile");
         var settingsTile = document.getElementById("settingsTile");
+
         var fileExplorerApp = document.getElementById("fileExplorerApp");
         var settingsApp = document.getElementById("settingsApp");
 
-        var closeWindow = document.getElementsByClassName("closeWindow")[0];
-        var maximizeWindow = document.getElementsByClassName("maximizeWindow")[0];
+        var app = document.getElementsByClassName("app");
+
+        var closeWindow = document.getElementsByClassName("closeWindow");
+        var maximizeWindow = document.getElementsByClassName("maximizeWindow");
 
         var windowIsMaximized = false;
 
-        var titleBar = document.getElementsByClassName("titleBar")[0];
+        var titleBar = document.getElementsByClassName("titleBar");
 
         var threeDimension = document.getElementById("threeDimension");
         var threeDimensionStyleSheet = document.createElement("link");
 
         var taskbar = document.getElementById("taskbar");
 
-        var fileExplorerAppRunning = document.getElementById("fileExplorerAppRunning");
+        var runningApp = document.getElementsByClassName("runningApp");
 
         var desktopContextMenu = document.getElementById("desktopContextMenu");
         var tileContextMenu = document.getElementById("tileContextMenu");
@@ -137,14 +140,14 @@ setTimeout(function finishedBooting()
 
             for(var i = 0; i < tile.length; i++)
             {
-                tile[i].addEventListener("mousedown", mouseDown, false);
+                tile[i].addEventListener("mousedown", mouseDownOnTile, false);
                 tile[i].addEventListener("contextmenu", showTileContextMenu, false);
             }
 
             fileExplorerTile.addEventListener("click", openFileExplorerApp, false);
             settingsTile.addEventListener("click", openSettingsApp, false);
 
-            window.addEventListener("mouseup", mouseUp, false);
+            window.addEventListener("mouseup", mouseUpOnTile, false);
         };
 
         function showTileContextMenu()
@@ -195,12 +198,12 @@ setTimeout(function finishedBooting()
             document.getElementById(sessionStorage.pickedTile).style.height = "16%";
         };
 
-        function mouseUp()
+        function mouseUpOnTile()
         {
             window.removeEventListener("mousemove", moveTile, true);
         };
 
-        function mouseDown(event)
+        function mouseDownOnTile(event)
         {
             flag = 0;
 
@@ -239,36 +242,56 @@ setTimeout(function finishedBooting()
                 fileExplorerApp.style.display = "inline";
             }
 
-            closeWindow.onclick = function()
+        };
+
+        for(var i = 0; i < closeWindow.length; i++)
+        {
+            var closeCurrentWindow = closeWindow[i];
+        }
+
+        closeCurrentWindow.onclick = function()
+        {
+
+            for(var i = 0; i < runningApp.length; i++)
             {
-                fileExplorerApp.style.display = "none";
-                fileExplorerAppRunning.style.display = "none";
-            };
+                runningApp[i].style.display = "none";
+            }
 
-            function windowMaximized()
+            for(var i = 0; i < app.length; i++)
             {
-                windowIsMaximized = true;
+                app[i].style.display = "none";
+            }
 
-                fileExplorerApp.style.left = "0%";
-                fileExplorerApp.style.top = "0%";
-                fileExplorerApp.style.width = "100%";
-                fileExplorerApp.style.height = "100%";
+        };
 
-                maximizeWindow.onclick = function()
-                {
-                    windowRestored();
-                };
+        function windowMaximized()
+        {
+            windowIsMaximized = true;
 
+            for(var i = 0; i < app.length; i++)
+            {
+                app[i].style.left = "0%";
+                app[i].style.top = "0%";
+                app[i].style.width = "100%";
+                app[i].style.height = "100%";
+            }
+
+            maximizeWindow.onclick = function()
+            {
+                windowRestored();
             };
 
             function windowRestored()
             {
                 windowIsMaximized = false;
 
-                fileExplorerApp.style.left = "15%";
-                fileExplorerApp.style.top = "25%";
-                fileExplorerApp.style.width = "75%";
-                fileExplorerApp.style.height = "50%";
+                for(var i = 0; i < app.length; i++)
+                {
+                    app[i].style.left = "15%";
+                    app[i].style.top = "25%";
+                    app[i].style.width = "75%";
+                    app[i].style.height = "50%";
+                }
 
                 maximizeWindow.onclick = function()
                 {
@@ -277,51 +300,58 @@ setTimeout(function finishedBooting()
 
             };
 
-            maximizeWindow.onclick = function()
+        };
+
+        maximizeWindow.onclick = function()
+        {
+            windowMaximized();
+        };
+
+        window.onload = addListeners();
+
+        var offX;
+        var offY;
+
+        function addListeners()
+        {
+
+            for(var i = 0; i < titleBar.length; i++)
             {
-                windowMaximized();
-            };
+                titleBar[i].addEventListener("mousedown", mouseDownOnTitleBar, false);
+            }
 
-            window.onload = addListeners();
+            window.addEventListener("mouseup", mouseUpOnTitleBar, false);
+        };
 
-            var offX;
-            var offY;
+        function mouseUpOnTitleBar()
+        {
+            window.removeEventListener("mousemove", moveWindow, true);
+        };
 
-            function addListeners()
+        function mouseDownOnTitleBar(event)
+        {
+            offY = event.clientY - parseInt(this.parentNode.offsetTop);
+            offX = event.clientX - parseInt(this.parentNode.offsetLeft);
+
+            sessionStorage.setItem("pickedWindow", this.parentNode.id);
+
+            window.addEventListener("mousemove", moveWindow, true);
+        };
+
+        function moveWindow(event)
+        {
+            document.getElementById(sessionStorage.pickedWindow).style.top = (event.clientY - offY) + "px";
+            document.getElementById(sessionStorage.pickedWindow).style.left = (event.clientX - offX) + "px";
+
+            if(document.getElementById(sessionStorage.pickedWindow).style.left < "0%")
             {
-                titleBar.addEventListener("mousedown", mouseDown, false);
-                window.addEventListener("mouseup", mouseUp, false);
-            };
+                document.getElementById(sessionStorage.pickedWindow).style.left = "0%";
+            }
 
-            function mouseUp()
+            if(document.getElementById(sessionStorage.pickedWindow).style.top < "0%")
             {
-                window.removeEventListener("mousemove", moveWindow, true);
-            };
-
-            function mouseDown(event)
-            {
-                offY = event.clientY - parseInt(fileExplorerApp.offsetTop);
-                offX = event.clientX - parseInt(fileExplorerApp.offsetLeft);
-
-                window.addEventListener("mousemove", moveWindow, true);
-            };
-
-            function moveWindow(event)
-            {
-                fileExplorerApp.style.top = (event.clientY - offY) + "px";
-                fileExplorerApp.style.left = (event.clientX - offX) + "px";
-
-                if(fileExplorerApp.style.left < "0%")
-                {
-                    fileExplorerApp.style.left = "0%";
-                }
-
-                if(fileExplorerApp.style.top < "0%")
-                {
-                    fileExplorerApp.style.top = "0%";
-                }
-
-            };
+                document.getElementById(sessionStorage.pickedWindow).style.top = "0%";
+            }
 
         };
 
