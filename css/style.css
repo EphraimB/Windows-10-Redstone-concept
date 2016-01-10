@@ -50,6 +50,7 @@ settingsAppRunning:hover{background-color: grey;}
 #edgeTile{left: 25%; top: 25%;}
 #fileExplorerTile{left: 40%; top: 25%;}
 #settingsTile{left: 55%; top: 25%;}
+#feedbackTile{left: 70%; top: 25%;}
 
 .app{position: absolute; left: 15%; top: 25%; width: 75%; height: 50%; box-shadow: 0px 0px 5px grey; display: none;}
 
