@@ -110,7 +110,14 @@
 <div class="minimizeWindow">-</div>
 </div>
 </div>
-<div class="window"></div>
+<div class="window">
+<form method="post" action="submitFeedback.php">
+<input type="text" id="senderEmail" name="senderEmail">
+<input type="text" id="feedbackTitle" name="feedbackTitle" placeholder="Title">
+<textarea id="feedbackBody" name="feedbackBody" placeholder="Type your feedback here..."></textarea>
+<input type="submit" name="submitFeedback" id="submitFeedback">
+</form>
+</div>
 </div>
 
 <div id="watermark">Windows 10 Insider Preview Evaluation copy. Build 11290</div>
