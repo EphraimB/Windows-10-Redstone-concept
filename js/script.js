@@ -370,12 +370,18 @@ setTimeout(function finishedBooting()
 
         function addTaskbarListeners()
         {
-            settingsAppRunning.addEventListener("click", settingsAppRunningClicked, false)
+            settingsAppRunning.addEventListener("click", settingsAppRunningClicked, false);
+            fileExplorerAppRunning.addEventListener("click", fileExplorerAppRunningClicked, false);
         };
 
         function settingsAppRunningClicked()
         {
             settingsApp.style.display = "inline";
+        };
+
+        function fileExplorerAppRunningClicked()
+        {
+            fileExplorerApp.style.display = "inline";
         };
 
         threeDimension.onclick = function enableThreeDimension()
