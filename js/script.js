@@ -48,6 +48,7 @@ setTimeout(function finishedBooting()
 
         var closeWindow = document.getElementsByClassName("closeWindow");
         var maximizeWindow = document.getElementsByClassName("maximizeWindow");
+        var minimizeWindow = document.getElementsByClassName("minimizeWindow");
 
         var windowIsMaximized = false;
 
@@ -262,6 +263,11 @@ setTimeout(function finishedBooting()
                 maximizeWindow[i].addEventListener("click", windowMaximizedClicked, false);
             }
 
+            for(var i = 0; i < minimizeWindow.length; i++)
+            {
+                minimizeWindow[i].addEventListener("click", windowMinimizedClicked, false);
+            }
+
         };
 
         function closeWindowClicked()
@@ -305,6 +311,11 @@ setTimeout(function finishedBooting()
 
             this.removeEventListener("click", windowRestored, false);
             this.addEventListener("click", windowMaximizedClicked, false);
+        };
+
+        function windowMinimizedClicked()
+        {
+            document.getElementById(this.parentNode.parentNode.parentNode.id).style.display = "none";
         };
 
         window.onload = addListeners();
