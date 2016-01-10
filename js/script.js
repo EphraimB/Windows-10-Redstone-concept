@@ -318,12 +318,12 @@ setTimeout(function finishedBooting()
             document.getElementById(this.parentNode.parentNode.parentNode.id).style.display = "none";
         };
 
-        window.onload = addListeners();
+        window.onload = addTitleBarListeners();
 
         var offX;
         var offY;
 
-        function addListeners()
+        function addTitleBarListeners()
         {
 
             for(var i = 0; i < titleBar.length; i++)
@@ -364,6 +364,18 @@ setTimeout(function finishedBooting()
                 document.getElementById(sessionStorage.pickedWindow).style.top = "0%";
             }
 
+        };
+
+        window.onload = addTaskbarListeners()
+
+        function addTaskbarListeners()
+        {
+            settingsAppRunning.addEventListener("click", settingsAppRunningClicked, false)
+        };
+
+        function settingsAppRunningClicked()
+        {
+            settingsApp.style.display = "inline";
         };
 
         threeDimension.onclick = function enableThreeDimension()
