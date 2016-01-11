@@ -49,6 +49,11 @@ setTimeout(function finishedBooting()
 
         var app = document.getElementsByClassName("app");
 
+        var leftBorder = document.getElementsByClassName("leftBorder");
+        var rightBorder = document.getElementsByClassName("rightBorder");
+        var topBorder = document.getElementsByClassName("topBorder");
+        var bottomBorder = document.getElementsByClassName("bottomBorder");
+
         var closeWindow = document.getElementsByClassName("closeWindow");
         var maximizeWindow = document.getElementsByClassName("maximizeWindow");
         var minimizeWindow = document.getElementsByClassName("minimizeWindow");
@@ -392,7 +397,92 @@ setTimeout(function finishedBooting()
 
         function addWindowBorderListeners()
         {
-            
+
+            for(var i = 0; i < topBorder.length; i++)
+            {
+                topBorder[i].addEventListener("mousedown", topBorderMouseDown, false);
+            }
+
+            for(var i = 0; i < bottomBorder.length; i++)
+            {
+                bottomBorder[i].addEventListener("mousedown", bottomBorderMouseDown, false);
+            }
+
+            for(var i = 0; i < leftBorder.length; i++)
+            {
+                leftBorder[i].addEventListener("mousedown", leftBorderMouseDown, false);
+            }
+
+            for(var i = 0; i < rightBorder.length; i++)
+            {
+                rightBorder[i].addEventListener("mousedown", rightBorderMouseDown, false);
+            }
+
+            window.addEventListener("mouseup", mouseUpOnBorders, false);
+        };
+
+        function mouseUpOnBorders()
+        {
+            window.removeEventListener("mousemove", resizeWindowOnTop, true);
+            window.removeEventListener("mousemove", resizeWindowOnBottom, true);
+            window.removeEventListener("mousemove", resizeWindowOnLeft, true);
+            window.removeEventListener("mousemove", resizeWindowOnRight, true);
+        };
+
+        function topBorderMouseDown(event)
+        {
+            offsetY = event.clientY - parseInt(this.offsetTop);
+
+            sessionStorage.setItem("pickedWindow", this.parentNode.id);
+
+            window.addEventListener("mousemove", resizeWindowOnTop, true);
+        };
+
+        function bottomBorderMouseDown(event)
+        {
+            offsetY = event.clientY - parseInt(this.offsetTop);
+
+            sessionStorage.setItem("pickedWindow", this.parentNode.id);
+
+            window.addEventListener("mousemove", resizeWindowOnBottom, true);
+        };
+
+        function leftBorderMouseDown(event)
+        {
+            offsetX = event.clientX - parseInt(this.offsetLeft);
+
+            sessionStorage.setItem("pickedWindow", this.parentNode.id);
+
+            window.addEventListener("mousemove", resizeWindowOnLeft, true);
+        };
+
+        function rightBorderMouseDown(event)
+        {
+            offsetX = event.clientX - parseInt(this.offsetLeft);
+
+            sessionStorage.setItem("pickedWindow", this.parentNode.id);
+
+            window.addEventListener("mousemove", resizeWindowOnRight, true);
+        };
+
+        function resizeWindowOnTop(event)
+        {
+            document.getElementById(sessionStorage.pickedWindow).style.height = (event.clientY - offsetY) + "px";
+        };
+
+        function resizeWindowOnBottom(event)
+        {
+            document.getElementById(sessionStorage.pickedWindow).style.height = (event.clientY - offsetY) + "px";
+        };
+
+        function resizeWindowOnLeft(event)
+        {
+            document.getElementById(sessionStorage.pickedWindow).style.width = (event.clientX - offsetX) + "px";
+        };
+
+        function resizeWindowOnRight(event)
+        {
+            document.getElementById(sessionStorage.pickedWindow).style.width = (event.clientX - offsetX) + "px";
         };
 
         window.onload = addTaskbarListeners();
