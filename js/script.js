@@ -94,9 +94,13 @@ setTimeout(function finishedBooting()
         logonScreenId.style.display = "none";
         desktop.style.display = "inline"
 
-        desktop.oncontextmenu = function()
+        desktop.oncontextmenu = function(event)
         {
+            desktopContextMenu.style.left = event.clientX + "px";
+            desktopContextMenu.style.top = event.clientY + "px";
+
             desktopContextMenu.style.display = "inline";
+
             return false;
         };
 
@@ -164,8 +168,16 @@ setTimeout(function finishedBooting()
             window.addEventListener("mouseup", mouseUpOnTile, false);
         };
 
-        function showTileContextMenu()
+        function showTileContextMenu(event)
         {
+            tileContextMenu.style.left = event.clientX + "px";
+
+            sessionStorage.setItem("tileContextMenuPositionX", event.clientX + "px");
+            sessionStorage.setItem("tileContextMenuPositionY", event.clientY + "px");
+            sessionStorage.setItem("tileContextMenuWidth", tileContextMenu.style.width + "px");
+
+            tileContextMenu.style.top = event.clientY + "px";
+
             tileContextMenu.style.display = "inline";
 
             sessionStorage.setItem("pickedTile", this.id);
@@ -175,6 +187,9 @@ setTimeout(function finishedBooting()
 
         resizeMenu.onmouseover = function()
         {
+            resizeSubMenu.style.left = sessionStorage.tileContextMenuPositionX + sessionStorage.tileContextMenuWidth;
+            resizeSubMenu.style.top = sessionStorage.tileContextMenuPositionY;
+
             resizeSubMenu.style.display = "inline";
         };
 
