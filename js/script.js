@@ -388,7 +388,14 @@ setTimeout(function finishedBooting()
 
         };
 
-        window.onload = addTaskbarListeners()
+        window.onload = addWindowBorderListeners();
+
+        function addWindowBorderListeners()
+        {
+            
+        };
+
+        window.onload = addTaskbarListeners();
 
         function addTaskbarListeners()
         {
