@@ -66,6 +66,8 @@ setTimeout(function finishedBooting()
 
         var settingsAppRunning = document.getElementById("settingsAppRunning");
 
+        var feedbackAppRunning = document.getElementById("feedbackAppRunning");
+
         var desktopContextMenu = document.getElementById("desktopContextMenu");
         var tileContextMenu = document.getElementById("tileContextMenu");
 
@@ -257,6 +259,7 @@ setTimeout(function finishedBooting()
 
             if(flag == 0)
             {
+                feedbackAppRunning.style.display = "inline";
                 feedbackApp.style.display = "inline";
             }
 
@@ -295,6 +298,11 @@ setTimeout(function finishedBooting()
             if(this.parentNode.parentNode.parentNode.id == "settingsApp")
             {
                 settingsAppRunning.style.display = "none";
+            }
+
+            if(this.parentNode.parentNode.parentNode.id == "feedbackApp")
+            {
+                feedbackAppRunning.style.display = "none";
             }
 
             document.getElementById(this.parentNode.parentNode.parentNode.id).style.display = "none";
@@ -386,6 +394,7 @@ setTimeout(function finishedBooting()
         {
             settingsAppRunning.addEventListener("click", settingsAppRunningClicked, false);
             fileExplorerAppRunning.addEventListener("click", fileExplorerAppRunningClicked, false);
+            feedbackAppRunning.addEventListener("click", feedbackAppRunningClicked, false);
         };
 
         function settingsAppRunningClicked()
@@ -397,6 +406,11 @@ setTimeout(function finishedBooting()
         {
             fileExplorerApp.style.display = "inline";
         };
+
+        function feedbackAppRunningClicked()
+        {
+            feedbackApp.style.display = "inline";
+        }
 
         threeDimension.onclick = function enableThreeDimension()
         {
