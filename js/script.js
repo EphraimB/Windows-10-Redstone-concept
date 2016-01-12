@@ -91,6 +91,10 @@ setTimeout(function finishedBooting()
         var lock = document.getElementById("lock");
         var shutDown = document.getElementById("shutDown");
 
+        var onlongtouch;
+        var timer;
+        var touchduration = 500;
+
         logonScreenId.style.display = "none";
         desktop.style.display = "inline"
 
@@ -105,6 +109,34 @@ setTimeout(function finishedBooting()
         };
 
         desktop.onclick = function()
+        {
+            desktopContextMenu.style.display = "none";
+            tileContextMenu.style.display = "none";
+
+            resizeSubMenu.style.display = "none";
+        };
+
+        desktop.ontouchstart = function()
+        {
+            timer = setTimeout(onlongtouch, touchduration);
+        };
+
+        desktop.ontouchend = function()
+        {
+
+            if(timer)
+            {
+                clearTimeout(timer);
+            }
+
+        };
+
+        function onlongtouch()
+        {
+            alert("Testing");
+        };
+
+        desktop.ontouchstart = function()
         {
             desktopContextMenu.style.display = "none";
             tileContextMenu.style.display = "none";
