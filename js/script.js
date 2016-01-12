@@ -230,10 +230,12 @@ setTimeout(function finishedBooting()
             document.getElementById(sessionStorage.pickedTile).style.height = "16%";
         };
 
-        function mouseUpOnTile()
+        function mouseUpOnTile(event)
         {
             window.removeEventListener("mousemove", moveTile, true);
             window.removeEventListener("touchend", moveTile, true);
+
+            event.preventDefault();
         };
 
         function mouseDownOnTile(event)
@@ -247,6 +249,8 @@ setTimeout(function finishedBooting()
 
             window.addEventListener("mousemove", moveTile, true);
             window.addEventListener("touchmove", moveTile, true);
+
+            event.preventDefault();
         };
 
         function moveTile(event)
@@ -255,6 +259,8 @@ setTimeout(function finishedBooting()
 
             document.getElementById(sessionStorage.pickedTile).style.top = (event.clientY - offsetY) + "px";
             document.getElementById(sessionStorage.pickedTile).style.left = (event.clientX - offsetX) + "px";
+
+            event.preventDefault();
         };
 
         function openSettingsApp()
