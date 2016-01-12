@@ -169,6 +169,8 @@ setTimeout(function finishedBooting()
             }
 
             fileExplorerTile.addEventListener("click", openFileExplorerApp, false);
+            fileExplorerTile.addEventListener("touchend", openFileExplorerApp, false);
+
             settingsTile.addEventListener("click", openSettingsApp, false);
             feedbackTile.addEventListener("click", openFeedbackApp, false);
 
