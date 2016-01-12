@@ -416,20 +416,32 @@ setTimeout(function finishedBooting()
         var offX;
         var offY;
 
+        var firstTouchPoint;
+
+        var touchPointX;
+        var touchPointY;
+
         function addTitleBarListeners()
         {
 
             for(var i = 0; i < titleBar.length; i++)
             {
                 titleBar[i].addEventListener("mousedown", mouseDownOnTitleBar, false);
+                titleBar[i].addEventListener("touchstart", touchDownOnTitleBar, false);
             }
 
             window.addEventListener("mouseup", mouseUpOnTitleBar, false);
+            window.addEventListener("touchend", touchUpOnTitleBar, false);
         };
 
         function mouseUpOnTitleBar()
         {
             window.removeEventListener("mousemove", moveWindow, true);
+        };
+
+        function touchUpOnTitleBar(event)
+        {
+            window.removeEventListener("touchmove", touchMoveWindow, true);
         };
 
         function mouseDownOnTitleBar(event)
@@ -440,6 +452,24 @@ setTimeout(function finishedBooting()
             sessionStorage.setItem("pickedWindow", this.parentNode.id);
 
             window.addEventListener("mousemove", moveWindow, true);
+        };
+
+        function touchDownOnTitleBar(event)
+        {
+
+            firstTouchPoint = event.changedTouches[0];
+
+            offY = parseInt(this.parentNode.offsetTop);
+            offX = parseInt(this.parentNode.offsetLeft);
+
+            touchPointX = parseInt(firstTouchPoint.clientX);
+            touchPointY = parseInt(firstTouchPoint.clientY);
+
+            sessionStorage.setItem("touchedWindow", this.parentNode.id);
+
+            window.addEventListener("touchmove", touchMoveWindow, true);
+
+            event.preventDefault();
         };
 
         function moveWindow(event)
@@ -457,6 +487,14 @@ setTimeout(function finishedBooting()
                 document.getElementById(sessionStorage.pickedWindow).style.top = "0%";
             }
 
+        };
+
+        function touchMoveWindow(event)
+        {
+            firstTouchPoint = event.changedTouches[0];
+
+            document.getElementById(sessionStorage.touchedWindow).style.left = offX + parseInt(firstTouchPoint.clientX) - touchPointX + "px";
+            document.getElementById(sessionStorage.touchedWindow).style.top = offY + parseInt(firstTouchPoint.clientY) - touchPointY + "px";
         };
 
         window.onload = addWindowBorderListeners();
