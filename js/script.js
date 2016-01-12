@@ -158,6 +158,8 @@ setTimeout(function finishedBooting()
             for(var i = 0; i < tile.length; i++)
             {
                 tile[i].addEventListener("mousedown", mouseDownOnTile, false);
+                tile[i].addEventListener("touchstart", mouseDownOnTile, false);
+
                 tile[i].addEventListener("contextmenu", showTileContextMenu, false);
             }
 
@@ -166,6 +168,7 @@ setTimeout(function finishedBooting()
             feedbackTile.addEventListener("click", openFeedbackApp, false);
 
             window.addEventListener("mouseup", mouseUpOnTile, false);
+            window.addEventListener("touchend", mouseUpOnTile, false);
         };
 
         function showTileContextMenu(event)
@@ -230,6 +233,7 @@ setTimeout(function finishedBooting()
         function mouseUpOnTile()
         {
             window.removeEventListener("mousemove", moveTile, true);
+            window.removeEventListener("touchend", moveTile, true);
         };
 
         function mouseDownOnTile(event)
@@ -242,6 +246,7 @@ setTimeout(function finishedBooting()
             sessionStorage.setItem("pickedTile", this.id);
 
             window.addEventListener("mousemove", moveTile, true);
+            window.addEventListener("touchmove", moveTile, true);
         };
 
         function moveTile(event)
