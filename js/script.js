@@ -151,6 +151,11 @@ setTimeout(function finishedBooting()
         var offsetX;
         var offsetY;
 
+        var firstTouchPoint;
+
+        var touchPointX;
+        var touchPointY;
+
         function addTileListeners()
         {
             var flag = 0;
@@ -158,7 +163,7 @@ setTimeout(function finishedBooting()
             for(var i = 0; i < tile.length; i++)
             {
                 tile[i].addEventListener("mousedown", mouseDownOnTile, false);
-                tile[i].addEventListener("touchstart", mouseDownOnTile, false);
+                tile[i].addEventListener("touchstart", touchOnTile, false);
 
                 tile[i].addEventListener("contextmenu", showTileContextMenu, false);
             }
@@ -168,7 +173,7 @@ setTimeout(function finishedBooting()
             feedbackTile.addEventListener("click", openFeedbackApp, false);
 
             window.addEventListener("mouseup", mouseUpOnTile, false);
-            window.addEventListener("touchend", mouseUpOnTile, false);
+            window.addEventListener("touchend", touchUpOnTile, false);
         };
 
         function showTileContextMenu(event)
@@ -233,7 +238,11 @@ setTimeout(function finishedBooting()
         function mouseUpOnTile(event)
         {
             window.removeEventListener("mousemove", moveTile, true);
-            window.removeEventListener("touchend", moveTile, true);
+        };
+
+        function touchUpOnTile(event)
+        {
+            window.removeEventListener("touchmove", touchMoveTile, true);
 
             event.preventDefault();
         };
@@ -248,7 +257,23 @@ setTimeout(function finishedBooting()
             sessionStorage.setItem("pickedTile", this.id);
 
             window.addEventListener("mousemove", moveTile, true);
-            window.addEventListener("touchmove", moveTile, true);
+        };
+
+        function touchOnTile(event)
+        {
+            flag = 0;
+
+            firstTouchPoint = event.changedTouches[0];
+
+            touchPointX = parseInt(firstTouchPoint.clientX);
+            touchPointY = parseInt(firstTouchPoint.clientY);
+
+            offsetY = parseInt(this.offsetTop);
+            offsetX = parseInt(this.offsetLeft);
+
+            sessionStorage.setItem("touchedTile", this.id);
+
+            window.addEventListener("touchmove", touchMoveTile, true);
 
             event.preventDefault();
         };
@@ -259,6 +284,16 @@ setTimeout(function finishedBooting()
 
             document.getElementById(sessionStorage.pickedTile).style.top = (event.clientY - offsetY) + "px";
             document.getElementById(sessionStorage.pickedTile).style.left = (event.clientX - offsetX) + "px";
+        };
+
+        function touchMoveTile(event)
+        {
+            flag = 1;
+
+            firstTouchPoint = event.changedTouches[0];
+
+            document.getElementById(sessionStorage.touchedTile).style.top = offsetY + parseInt(firstTouchPoint.clientY) - touchPointY + "px";
+            document.getElementById(sessionStorage.touchedTile).style.left = offsetX + parseInt(firstTouchPoint.clientX) - touchPointX + "px";
 
             event.preventDefault();
         };
