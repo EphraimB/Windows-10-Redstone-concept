@@ -169,8 +169,13 @@ setTimeout(function finishedBooting()
             }
 
             fileExplorerTile.addEventListener("click", openFileExplorerApp, false);
+            fileExplorerTile.addEventListener("touchend", openFileExplorerApp, false);
+
             settingsTile.addEventListener("click", openSettingsApp, false);
+            settingsTile.addEventListener("touchend", openSettingsApp, false);
+
             feedbackTile.addEventListener("click", openFeedbackApp, false);
+            feedbackTile.addEventListener("touchend", openFeedbackApp, false);
 
             window.addEventListener("mouseup", mouseUpOnTile, false);
             window.addEventListener("touchend", touchUpOnTile, false);
