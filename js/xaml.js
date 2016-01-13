@@ -1,19 +1,55 @@
+var splitViewButton = document.getElementsByClassName("splitView");
+var hamburgerButton = document.getElementsByClassName("hamburgerButton");
+
+var splitViewExpanded = document.getElementsByClassName("splitViewExpanded");
+var hamburgerButtonExpanded = document.getElementsByClassName("hamburgerButtonExpanded");
+
+window.onload = addXAMLListeners();
+
+function addXAMLListeners()
+{
+
+    for(var i = 0; i < splitViewButton.length; i++)
+    {
+        splitViewButton[i].addEventListener("click", splitView, false);
+        splitViewButton[i].addEventListener("touchend", splitView, false);
+    }
+
+};
+
 function splitView()
 {
-    var splitView = document.getElementsByClassName("splitView")[0];
-    var hamburgerButton = document.getElementsByClassName("hamburgerButton")[0];
 
-    var splitViewExpanded = document.getElementsByClassName("splitViewExpanded")[0];
-    var hamburgerButtonExpanded = document.getElementsByClassName("hamburgerButtonExpanded")[0];
-
-    splitView.style.display = "none";
-    splitViewExpanded.style.display = "inline";
-
-    hamburgerButtonExpanded.onclick = function()
+    for(var i = 0; i < splitViewButton.length; i++)
     {
-        splitViewExpanded.style.display = "none";
-        splitView.style.display = "inline";
-    };
+        splitViewButton[i].style.display = "none";
+    }
+
+    for(var j = 0; j < splitViewExpanded.length; j++)
+    {
+        splitViewExpanded[j].style.display = "inline";
+    }
+
+    for(var k = 0; k < hamburgerButtonExpanded.length; k++)
+    {
+        hamburgerButtonExpanded[k].addEventListener("click", onSplitViewExpanded, false);
+        hamburgerButtonExpanded[k].addEventListener("touchend", onSplitViewExpanded, false);
+    }
+
+};
+
+function onSplitViewExpanded()
+{
+
+    for(var i = 0; i < splitViewExpanded.length; i++)
+    {
+        splitViewExpanded[i].style.display = "none";
+    }
+
+    for(var j = 0; j < splitViewButton.length; j++)
+    {
+        splitViewButton[j].style.display = "inline";
+    }
 
 };
 
