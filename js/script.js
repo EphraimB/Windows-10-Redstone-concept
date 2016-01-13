@@ -104,18 +104,19 @@ setTimeout(function finishedBooting()
         function addDesktopListeners()
         {
             desktop.addEventListener("click", desktopClicked, false);
-            desktop.addEventListener("contextmenu", desktopContextMenu, false);
-            desktop.addEventListener("touchend", desktopTouchEnd, false);
+            desktop.addEventListener("contextmenu", showDesktopContextMenu, false);
         };
 
-        function desktopContextMenu(event)
+        function showDesktopContextMenu(event)
         {
             desktopContextMenu.style.left = event.clientX + "px";
             desktopContextMenu.style.top = event.clientY + "px";
 
             desktopContextMenu.style.display = "inline";
 
-            return false;
+            desktop.addEventListener("touchstart", desktopTouchStart, false);
+
+            event.preventDefault();
         };
 
         function desktopClicked()
@@ -126,12 +127,15 @@ setTimeout(function finishedBooting()
             resizeSubMenu.style.display = "none";
         };
 
-        function desktopTouchEnd()
+        function desktopTouchStart()
         {
             desktopContextMenu.style.display = "none";
+
             tileContextMenu.style.display = "none";
 
             resizeSubMenu.style.display = "none";
+
+            desktop.removeEventListener("touchstart", desktopTouchStart, false);
         };
 
         window.onload = addPowerListeners();
@@ -220,9 +224,8 @@ setTimeout(function finishedBooting()
         {
             tileContextMenu.style.left = event.clientX + "px";
 
-            sessionStorage.setItem("tileContextMenuPositionX", event.clientX + "px");
-            sessionStorage.setItem("tileContextMenuPositionY", event.clientY + "px");
-            sessionStorage.setItem("tileContextMenuWidth", tileContextMenu.style.width + "px");
+            sessionStorage.setItem("tileContextMenuPositionX", event.clientX);
+            sessionStorage.setItem("tileContextMenuPositionY", event.clientY);
 
             tileContextMenu.style.top = event.clientY + "px";
 
@@ -235,8 +238,8 @@ setTimeout(function finishedBooting()
 
         resizeMenu.onmouseover = function()
         {
-            resizeSubMenu.style.left = sessionStorage.tileContextMenuPositionX + sessionStorage.tileContextMenuWidth;
-            resizeSubMenu.style.top = sessionStorage.tileContextMenuPositionY;
+            resizeSubMenu.style.left = parseInt(sessionStorage.tileContextMenuPositionX) + parseInt(tileContextMenu.clientWidth) + "px";
+            resizeSubMenu.style.top = sessionStorage.tileContextMenuPositionY + "px";
 
             resizeSubMenu.style.display = "inline";
         };
