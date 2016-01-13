@@ -93,12 +93,22 @@ setTimeout(function finishedBooting()
 
         var onlongtouch;
         var timer;
-        var touchduration = 500;
+        var lockTimer;
+        var touchduration = 800;
 
         logonScreenId.style.display = "none";
         desktop.style.display = "inline"
 
-        desktop.oncontextmenu = function(event)
+        window.onload = addDesktopListeners();
+
+        function addDesktopListeners()
+        {
+            desktop.addEventListener("click", desktopClicked, false);
+            desktop.addEventListener("contextmenu", desktopContextMenu, false);
+            desktop.addEventListener("touchend", desktopTouchEnd, false);
+        };
+
+        function desktopContextMenu(event)
         {
             desktopContextMenu.style.left = event.clientX + "px";
             desktopContextMenu.style.top = event.clientY + "px";
@@ -108,7 +118,7 @@ setTimeout(function finishedBooting()
             return false;
         };
 
-        desktop.onclick = function()
+        function desktopClicked()
         {
             desktopContextMenu.style.display = "none";
             tileContextMenu.style.display = "none";
@@ -116,27 +126,7 @@ setTimeout(function finishedBooting()
             resizeSubMenu.style.display = "none";
         };
 
-        desktop.ontouchstart = function()
-        {
-            timer = setTimeout(onlongtouch, touchduration);
-        };
-
-        desktop.ontouchend = function()
-        {
-
-            if(timer)
-            {
-                clearTimeout(timer);
-            }
-
-        };
-
-        function onlongtouch()
-        {
-            alert("Testing");
-        };
-
-        desktop.ontouchstart = function()
+        function desktopTouchEnd()
         {
             desktopContextMenu.style.display = "none";
             tileContextMenu.style.display = "none";
@@ -144,21 +134,34 @@ setTimeout(function finishedBooting()
             resizeSubMenu.style.display = "none";
         };
 
-        power.onclick = function powerToggle()
+        window.onload = addPowerListeners();
+
+        function addPowerListeners()
+        {
+            power.addEventListener("click", powerToggleOn, false);
+            power.addEventListener("touchend", powerToggleOn, false);
+        };
+
+        function powerToggleOn()
         {
             powerMenu.style.display = "inline";
 
-            power.onclick = function()
-            {
-                powerMenu.style.display = "none";
+            power.removeEventListener("click", powerToggleOn, false);
+            power.removeEventListener("touchend", powerToggleOn, false);
 
-                power.onclick = function()
-                {
-                    powerToggle();
-                };
+            power.addEventListener("click", powerToggleOff, false);
+            power.addEventListener("touchend", powerToggleOff, false);
+        };
 
-            };
+        function powerToggleOff()
+        {
+            powerMenu.style.display = "none";
 
+            power.removeEventListener("click", powerToggleOff, false);
+            power.removeEventListener("touchend", powerToggleOff, false);
+
+            power.addEventListener("click", powerToggleOn, false);
+            power.addEventListener("touchend", powerToggleOn, false);
         };
 
         restart.onclick = function()
@@ -376,16 +379,19 @@ setTimeout(function finishedBooting()
             for(var i = 0; i < closeWindow.length; i++)
             {
                 closeWindow[i].addEventListener("click", closeWindowClicked, false);
+                closeWindow[i].addEventListener("touchend", closeWindowClicked, false);
             }
 
             for(var i = 0; i < maximizeWindow.length; i++)
             {
                 maximizeWindow[i].addEventListener("click", windowMaximizedClicked, false);
+                maximizeWindow[i].addEventListener("touchend", windowMaximizedClicked, false);
             }
 
             for(var i = 0; i < minimizeWindow.length; i++)
             {
                 minimizeWindow[i].addEventListener("click", windowMinimizedClicked, false);
+                minimizeWindow[i].addEventListener("touchend", windowMinimizedClicked, false);
             }
 
         };
@@ -422,7 +428,10 @@ setTimeout(function finishedBooting()
             document.getElementById(this.parentNode.parentNode.parentNode.id).style.height = "93%";
 
             this.removeEventListener("click", windowMaximizedClicked, false);
+            this.removeEventListener("touchend", windowMaximizedClicked, false);
+
             this.addEventListener("click", windowRestored, false);
+            this.addEventListener("touchend", windowRestored, false);
         };
 
         function windowRestored()
@@ -435,7 +444,10 @@ setTimeout(function finishedBooting()
             document.getElementById(this.parentNode.parentNode.parentNode.id).style.height = "50%";
 
             this.removeEventListener("click", windowRestored, false);
+            this.removeEventListener("touchend", windowRestored, false);
+
             this.addEventListener("click", windowMaximizedClicked, false);
+            this.addEventListener("touchend", windowMaximizedClicked, false);
         };
 
         function windowMinimizedClicked()
@@ -626,8 +638,13 @@ setTimeout(function finishedBooting()
         function addTaskbarListeners()
         {
             settingsAppRunning.addEventListener("click", settingsAppRunningClicked, false);
+            settingsAppRunning.addEventListener("touchend", settingsAppRunningClicked, false);
+
             fileExplorerAppRunning.addEventListener("click", fileExplorerAppRunningClicked, false);
+            fileExplorerAppRunning.addEventListener("touchend", fileExplorerAppRunningClicked, false);
+
             feedbackAppRunning.addEventListener("click", feedbackAppRunningClicked, false);
+            feedbackAppRunning.addEventListener("touchend", feedbackAppRunningClicked, false);
         };
 
         function settingsAppRunningClicked()
