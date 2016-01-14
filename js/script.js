@@ -20,14 +20,19 @@ setTimeout(function finishedBooting()
 
         logonScreenId.style.display = "inline";
 
-        logonScreenId.oncontextmenu = function()
+        window.onload = addLoginScreenListener();
+
+        function addLoginScreenListener()
         {
-            return false;
+            logonScreenId.addEventListener("contextmenu", logonScreenContextMenu, false);
+
+            loginButton.addEventListener("click", desktop, false);
+            loginButton.addEventListener("touchend", desktop, false);
         };
 
-        loginButton.onclick = function()
+        function logonScreenContextMenu()
         {
-            desktop();
+            return false;
         };
 
     };
@@ -144,6 +149,15 @@ setTimeout(function finishedBooting()
         {
             power.addEventListener("click", powerToggleOn, false);
             power.addEventListener("touchend", powerToggleOn, false);
+
+            restart.addEventListener("click", restartWindows, false);
+            restart.addEventListener("touchend", restartWindows, false);
+
+            lock.addEventListener("click", lockWindows, false);
+            lock.addEventListener("touchend", lockWindows, false);
+
+            shutDown.addEventListener("click", shutDownWindows, false);
+            shutDown.addEventListener("touchend", shutDownWindows, false);
         };
 
         function powerToggleOn()
@@ -168,19 +182,19 @@ setTimeout(function finishedBooting()
             power.addEventListener("touchend", powerToggleOn, false);
         };
 
-        restart.onclick = function()
+        function restartWindows()
         {
             window.location.reload(true);
         };
 
-        lock.onclick = function()
+        function lockWindows()
         {
             desktop.style.display = "none";
 
             logonScreen();
         };
 
-        shutDown.onclick = function()
+        function shutDownWindows()
         {
             window.close();
         };
