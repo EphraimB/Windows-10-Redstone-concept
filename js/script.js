@@ -665,24 +665,37 @@ setTimeout(function finishedBooting()
             feedbackApp.style.display = "inline";
         }
 
-        threeDimension.onclick = function enableThreeDimension()
+        window.onload = threeDimensionListener();
+
+        function threeDimensionListener()
+        {
+            threeDimension.addEventListener("click", enableThreeDimension, false);
+            threeDimension.addEventListener("touchend", enableThreeDimension, false);
+        };
+
+        function enableThreeDimension()
         {
             threeDimensionStyleSheet.setAttribute("rel", "stylesheet");
             threeDimensionStyleSheet.setAttribute("href", "css/3D.css");
 
             document.head.appendChild(threeDimensionStyleSheet);
 
-            threeDimension.onclick = function()
-            {
-                document.head.removeChild(threeDimensionStyleSheet);
+            threeDimension.removeEventListener("click", enableThreeDimension, false);
+            threeDimension.removeEventListener("touchend", enableThreeDimension, false);
 
-                threeDimension.onclick = function()
-                {
-                    enableThreeDimension();
-                };
+            threeDimension.addEventListener("click", disableThreeDimension, false);
+            threeDimension.addEventListener("touchend", disableThreeDimension, false);
+        };
 
-            };
+        function disableThreeDimension()
+        {
+            document.head.removeChild(threeDimensionStyleSheet);
 
+            threeDimension.removeEventListener("click", disableThreeDimension, false);
+            threeDimension.removeEventListener("touchend", disableThreeDimension, false);
+
+            threeDimension.addEventListener("click", enableThreeDimension, false);
+            threeDimension.addEventListener("touchend", enableThreeDimension, false);
         };
 
     };
