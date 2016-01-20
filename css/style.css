@@ -36,19 +36,19 @@
 
 #userProfile{position: absolute; left: 45%; top: 10%; width: 5%; height: 8%; background-image: url("../img/userProfile.jpg"); background-size: 100% 100%; border-radius: 100%;}
 
-#power{position: absolute; right: 5%; top: 10%; width: auto; height: auto; padding: 1.3%; color: white; text-align: center; font-size: 24pt; cursor: default;}
-#power:hover{background-color: grey;}
+.power{position: absolute; right: 5%; top: 10%; width: auto; height: auto; padding: 1.3%; color: white; text-align: center; font-size: 24pt; cursor: default;}
+.power:hover{background-color: grey;}
 
-#powerMenu{position: absolute; right: 2%; top: 20%; width: 10%; height: 15%; background-color: black; color: white; cursor: default; display: none;}
+.powerMenu{position: absolute; right: 2%; top: 20%; width: 10%; height: 15%; background-color: black; color: white; cursor: default; display: none;}
 
-#shutDown{position: absolute; left: 0%; top: 15%; width: 100%; height: 20%; text-align: center;}
-#shutDown:hover{background-color: grey;}
+.shutDown{position: absolute; left: 0%; top: 15%; width: 100%; height: 20%; text-align: center;}
+.shutDown:hover{background-color: grey;}
 
-#restart{position: absolute; left: 0%; top: 40%; width: 100%; height: 20%; text-align: center;}
-#restart:hover{background-color: grey;}
+.restart{position: absolute; left: 0%; top: 40%; width: 100%; height: 20%; text-align: center;}
+.restart:hover{background-color: grey;}
 
-#lock{position: absolute; left: 0%; top: 65%; width: 100%; height: 20%; text-align: center;}
-#lock:hover{background-color: grey;}
+.lock{position: absolute; left: 0%; top: 65%; width: 100%; height: 20%; text-align: center;}
+.lock:hover{background-color: grey;}
 
 #edgeTile{left: 25%; top: 25%;}
 #fileExplorerTile{left: 40%; top: 25%;}
