@@ -1,6 +1,13 @@
 var windowsTenLogo = document.getElementById("windowsTenLogo");
 var bootingScreen = document.getElementById("bootingScreen");
 
+var power = document.getElementsByClassName("power");
+var powerMenu = document.getElementsByClassName("powerMenu");
+
+var restart = document.getElementsByClassName("restart");
+var lock = document.getElementsByClassName("lock");
+var shutDown = document.getElementsByClassName("shutDown");
+
 bootingScreen.oncontextmenu = function()
 {
     return false;
@@ -33,6 +40,71 @@ setTimeout(function finishedBooting()
         function logonScreenContextMenu()
         {
             return false;
+        };
+
+        window.onload = addPowerListeners();
+
+        function addPowerListeners()
+        {
+
+            for(var i = 0; i < power.length; i++)
+            {
+                power[i].addEventListener("click", powerToggleOn, false);
+                power[i].addEventListener("touchend", powerToggleOn, false);
+            }
+
+            for(var j = 0; j < restart.length; j++)
+            {
+                restart[j].addEventListener("click", restartWindows, false);
+                restart[j].addEventListener("touchend", restartWindows, false);
+            }
+
+            for(var l = 0; l < shutDown.length; l++)
+            {
+                shutDown[l].addEventListener("click", shutDownWindows, false);
+                shutDown[l].addEventListener("touchend", shutDownWindows, false);
+            }
+
+        };
+
+        function powerToggleOn()
+        {
+
+            for(var i = 0; i < powerMenu.length; i++)
+            {
+                powerMenu[i].style.display = "inline";
+            }
+
+            this.removeEventListener("click", powerToggleOn, false);
+            this.removeEventListener("touchend", powerToggleOn, false);
+
+            this.addEventListener("click", powerToggleOff, false);
+            this.addEventListener("touchend", powerToggleOff, false);
+        };
+
+        function powerToggleOff()
+        {
+
+            for(var i = 0; i < powerMenu.length; i++)
+            {
+                powerMenu[i].style.display = "none";
+            }
+
+            this.removeEventListener("click", powerToggleOff, false);
+            this.removeEventListener("touchend", powerToggleOff, false);
+
+            this.addEventListener("click", powerToggleOn, false);
+            this.addEventListener("touchend", powerToggleOn, false);
+        };
+
+        function restartWindows()
+        {
+            window.location.reload(true);
+        };
+
+        function shutDownWindows()
+        {
+            window.close();
         };
 
     };
@@ -89,13 +161,6 @@ setTimeout(function finishedBooting()
         var wideTile = document.getElementById("wideTile");
         var largeTile = document.getElementById("largeTile");
 
-        var power = document.getElementById("power");
-        var powerMenu = document.getElementById("powerMenu");
-
-        var restart = document.getElementById("restart");
-        var lock = document.getElementById("lock");
-        var shutDown = document.getElementById("shutDown");
-
         var onlongtouch;
         var timer;
         var lockTimer;
@@ -147,39 +212,61 @@ setTimeout(function finishedBooting()
 
         function addPowerListeners()
         {
-            power.addEventListener("click", powerToggleOn, false);
-            power.addEventListener("touchend", powerToggleOn, false);
 
-            restart.addEventListener("click", restartWindows, false);
-            restart.addEventListener("touchend", restartWindows, false);
+            for(var i = 0; i < power.length; i++)
+            {
+                power[i].addEventListener("click", powerToggleOn, false);
+                power[i].addEventListener("touchend", powerToggleOn, false);
+            }
 
-            lock.addEventListener("click", lockWindows, false);
-            lock.addEventListener("touchend", lockWindows, false);
+            for(var j = 0; j < restart.length; j++)
+            {
+                restart[j].addEventListener("click", restartWindows, false);
+                restart[j].addEventListener("touchend", restartWindows, false);
+            }
 
-            shutDown.addEventListener("click", shutDownWindows, false);
-            shutDown.addEventListener("touchend", shutDownWindows, false);
+            for(var k = 0; k < lock.length; k++)
+            {
+                lock[k].addEventListener("click", lockWindows, false);
+                lock[k].addEventListener("touchend", lockWindows, false);
+            }
+
+            for(var l = 0; l < shutDown.length; l++)
+            {
+                shutDown[l].addEventListener("click", shutDownWindows, false);
+                shutDown[l].addEventListener("touchend", shutDownWindows, false);
+            }
+
         };
 
         function powerToggleOn()
         {
-            powerMenu.style.display = "inline";
 
-            power.removeEventListener("click", powerToggleOn, false);
-            power.removeEventListener("touchend", powerToggleOn, false);
+            for(var i = 0; i < powerMenu.length; i++)
+            {
+                powerMenu[i].style.display = "inline";
+            }
 
-            power.addEventListener("click", powerToggleOff, false);
-            power.addEventListener("touchend", powerToggleOff, false);
+            this.removeEventListener("click", powerToggleOn, false);
+            this.removeEventListener("touchend", powerToggleOn, false);
+
+            this.addEventListener("click", powerToggleOff, false);
+            this.addEventListener("touchend", powerToggleOff, false);
         };
 
         function powerToggleOff()
         {
-            powerMenu.style.display = "none";
 
-            power.removeEventListener("click", powerToggleOff, false);
-            power.removeEventListener("touchend", powerToggleOff, false);
+            for(var i = 0; i < powerMenu.length; i++)
+            {
+                powerMenu[i].style.display = "none";
+            }
 
-            power.addEventListener("click", powerToggleOn, false);
-            power.addEventListener("touchend", powerToggleOn, false);
+            this.removeEventListener("click", powerToggleOff, false);
+            this.removeEventListener("touchend", powerToggleOff, false);
+
+            this.addEventListener("click", powerToggleOn, false);
+            this.addEventListener("touchend", powerToggleOn, false);
         };
 
         function restartWindows()
