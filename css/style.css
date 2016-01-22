@@ -85,6 +85,8 @@
 
 .window{position: absolute; top: 7%; left: 1%; width: 98%; height: 92%; background-color: white;}
 
+#system{background-image: url("../img/systemIcon.png"); background-size: 100% 100%;}
+
 #threeDimension{position: absolute; right: 50%; top: 0%; width: auto; height: 100%; color: white; cursor: default; font-size: 24pt;}
 #threeDimension:hover{background-color: grey;}
 

@@ -6,3 +6,6 @@
 
 .tile{position: absolute; width: 8%; height: 3%; padding: 3%; background-color: blue; color: white; text-align: center; cursor: default;}
 .tile:hover{border: 1px solid white;}
+
+.settingsCategory{position: absolute; float: left; width: 25%; height: 50%;}
+.settingsCategory:hover{border: 1px solid grey;}
