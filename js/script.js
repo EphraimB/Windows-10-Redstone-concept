@@ -139,6 +139,12 @@ setTimeout(function finishedBooting()
 
         var titleBar = document.getElementsByClassName("titleBar");
 
+        var backButton = document.getElementsByClassName("backButton");
+
+        var appName = document.getElementsByClassName("appName");
+
+        var settingsBackButton = document.getElementById("settingsBackButton");
+
         var threeDimension = document.getElementById("threeDimension");
         var threeDimensionStyleSheet = document.createElement("link");
 
@@ -147,6 +153,11 @@ setTimeout(function finishedBooting()
         var runningApp = document.getElementsByClassName("runningApp");
 
         var settingsAppRunning = document.getElementById("settingsAppRunning");
+
+        var homePage = document.getElementById("homePage");
+        var personalizationPage = document.getElementById("personalizationPage");
+
+        var personalizationIcon = document.getElementById("personalization");
 
         var feedbackAppRunning = document.getElementById("feedbackAppRunning");
 
@@ -754,6 +765,44 @@ setTimeout(function finishedBooting()
         function settingsAppRunningClicked()
         {
             settingsApp.style.display = "inline";
+        };
+
+        function openSettingsHomePage()
+        {
+            personalizationPage.style.display = "none";
+            homePage.style.display = "inline";
+
+            settingsBackButton.style.display = "none";
+
+            for(var i = 0; i < appName.length; i++)
+            {
+                appName[i].style.left = "0%";
+            }
+
+        };
+
+        function openPersonalizationPage()
+        {
+            personalizationPage.style.display = "inline";
+
+            for(var i = 0; i < appName.length; i++)
+            {
+                appName[i].style.left = "3%";
+            }
+
+            settingsBackButton.style.display = "inline";
+
+            settingsBackButton.onclick = function()
+            {
+                openSettingsHomePage();
+            };
+
+        };
+
+        personalizationIcon.onclick = function()
+        {
+            homePage.style.display = "none";
+            openPersonalizationPage();
         };
 
         function fileExplorerAppRunningClicked()

@@ -72,7 +72,11 @@
 .rightBorder:hover{cursor: w-resize;}
 
 .titleBar{position: absolute; top: 1%; left: 1%; width: 98%; height: 6%; background-color: rgba(0, 0, 127, 0.5); cursor: default;}
-.appName{position: absolute; top: 0%; left: 1%; width: auto; height: auto; color: white;}
+
+.backButton{position: absolute; top: 0%; left: 0%; width: 3%; height: 100%; color: white; text-align: center; cursor: default; display: none;}
+.backButton:hover{background-color: grey;}
+
+.appName{position: absolute; top: 0%; left: 0%; width: auto; height: 100%; color: white;}
 
 .windowControls{position: absolute; top: 0%; right: 0%; width: 15%; height: 100%; color: white; cursor: default;}
 
@@ -86,6 +90,9 @@
 .minimizeWindow:hover{background-color: rgb(0, 0, 200);}
 
 .window{position: absolute; top: 7%; left: 1%; width: 98%; height: 92%; background-color: white;}
+
+#homePage{position: absolute; top: 0%; left: 0%; width: 100%; height: 100%;}
+#personalizationPage{position: absolute; top: 0%; left: 0%; width: 100%; height: 100%; display: none;}
 
 #system{background-image: url("../img/systemIcon.png"); background-size: 100% 100%; top: 2%; left: 10%;}
 #devices{background-image: url("../img/devicesIcon.png"); background-size: 100% 100%; top: 2%; left: 30%;}
