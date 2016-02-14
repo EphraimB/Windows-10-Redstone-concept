@@ -32,7 +32,9 @@
 #clock{position: absolute; right: 5%; top: 10%; color: white; cursor: default;}
 #date{position: absolute; right: 5%; bottom: 10%; color: white; cursor: default;}
 
-#watermark{position: absolute; right: 0%; bottom: 7%; width: 15%; height: auto; color: white; cursor: default;}
+.watermark{position: absolute; right: 0%; bottom: 7%; width: auto; height: auto; color: white; text-align: right; cursor: default;}
+.watermark:nth-child(1){bottom: 12%;}
+.watermark:nth-child(2){bottom: 7%;}
 
 #userProfile{position: absolute; left: 45%; top: 10%; width: 5%; height: 8%; background-image: url("../img/userProfile.jpg"); background-size: 100% 100%; border-radius: 100%;}
 
@@ -85,7 +87,14 @@
 
 .window{position: absolute; top: 7%; left: 1%; width: 98%; height: 92%; background-color: white;}
 
-#system{background-image: url("../img/systemIcon.png"); background-size: 100% 100%;}
+#system{background-image: url("../img/systemIcon.png"); background-size: 100% 100%; top: 2%; left: 10%;}
+#devices{background-image: url("../img/devicesIcon.png"); background-size: 100% 100%; top: 2%; left: 30%;}
+#personalization{background-image: url("../img/personalizationIcon.png"); background-size: 100% 100%; top: 2%; left: 50%;}
+#accounts{background-image: url("../img/accountsIcon.png"); background-size: 100% 100%; top: 2%; left: 70%;}
+#timeAndLanguage{background-image: url("../img/timeAndLanguageIcon.png"); background-size: 100% 100%; bottom: 2%; left: 10%;}
+#easeOfAccess{background-image: url("../img/easeOfAccessIcon.png"); background-size: 100% 100%; bottom: 2%; left: 30%;}
+#privacy{background-image: url("../img/privacyIcon.png"); background-size: 100% 100%; bottom: 2%; left: 50%;}
+#updateAndSecurity{background-image: url("../img/updateAndSecurityIcon.png"); background-size: 100% 100%; bottom: 2%; left: 70%;}
 
 #threeDimension{position: absolute; right: 50%; top: 0%; width: auto; height: 100%; color: white; cursor: default; font-size: 24pt;}
 #threeDimension:hover{background-color: grey;}
